@@ -177,7 +177,7 @@
   .about .panel{
     background:var(--card-plum); backdrop-filter:blur(16px);
     border:1px solid var(--border); border-radius:20px; padding:38px 40px;
-    display:grid; grid-template-columns:210px 1fr; gap:34px; align-items:start;
+    display:grid; grid-template-columns:210px 1fr; gap:34px; align-items:center;
     position:relative; overflow:hidden;
   }
   .about .panel::before{content:""; position:absolute; inset:0; pointer-events:none;
@@ -212,6 +212,11 @@
     .about .panel{grid-template-columns:1fr; justify-items:center; text-align:left; padding:30px 24px;}
     .photo-frame{width:180px; height:214px;}
   }
+
+  /* ---------- Community ---------- */
+  .community{max-width:700px; margin:60px auto 0; padding:0 24px; text-align:center;}
+  .community p{font-family:var(--serif); font-style:italic; font-size:1.4rem; line-height:1.4;
+    color:var(--ink); margin:0 0 20px; text-wrap:balance;}
 
   /* ---------- Closing ---------- */
   .close{max-width:760px; margin:66px auto 0; padding:0 24px; text-align:center;}
@@ -365,6 +370,11 @@
   <h3>Pick the one that fits where you are</h3>
   <p>One build stuck in chat, a week eaten by content, or a launch that needs the whole engine. Tell me which, and we start.</p>
   <a class="cta" href="mailto:sunny@sunnysink.com?subject=Working%20with%20you&body=Hi%20Sunny%2C%20here%27s%20where%20I%27m%20at%3A%20">Tell me where you are <span class="arw">→</span></a>
+</section>
+
+<section class="community">
+  <p>Soul-Forged Founders is the room where we build with Claude together, every week.</p>
+  <a class="cta ghost" href="https://www.skool.com/soul-forged-founders">Join Soul-Forged Founders <span class="arw">→</span></a>
 </section>
 
 <footer>
