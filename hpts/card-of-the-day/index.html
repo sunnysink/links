@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tarot Card of the Day</title>
 <meta name="description" content="Pull a free tarot card for today or a three-card reading. All 78 cards with a keyword, a short meaning, element, astrology and a yes-or-no answer.">
-<meta name="theme-color" content="#0A1A33">
+<meta name="theme-color" content="#06182F">
 <link rel="canonical" href="https://links.sunnysink.com/hpts/card-of-the-day/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="High Priestess Tarot School">
@@ -25,17 +25,17 @@
 <style>
 /* Layout: one centered column under a night sky. Title, mode switch, the spread, then the meanings. HPTS Celestial Oracle, dark only by design. */
 :root {
-  /* HPTS brand board, October 2026: navy velvet and night sky, honey-gold glow, cream florals. Hexes matched by eye from the board. */
-  --night: #0A1A33;
-  --deep: #10264A;
-  --sea: #22507A;
-  --ink: #151A2B;
-  --cream: #F3EFE4;
-  --mist: #D6D4E8;
-  --peri: #8A9EC2;
-  --gold: #C29443;
-  --honey: #E9C462;
-  --gold-soft: rgba(233, 196, 98, .32);
+  /* HPTS brand board, October 2026: navy velvet and night sky, honey-gold glow, cream florals. Hexes from Sunny, 2026-10-21. */
+  --night: #06182F;
+  --deep: #0D2342;
+  --sea: #224E79;
+  --ink: #141929;
+  --cream: #F5EFE4;
+  --mist: #D5D2E5;
+  --peri: #8298B9;
+  --gold: #C58F46;
+  --honey: #F0C265;
+  --gold-soft: rgba(240, 194, 101, .32);
   --serif: "DM Serif Display", "Bodoni Moda", Didot, "Times New Roman", serif;
   --sans: "Jost", "Futura", "Segoe UI", system-ui, sans-serif;
   color-scheme: dark;
@@ -44,7 +44,7 @@
 html, body { min-height: 100%; }
 body {
   margin: 0;
-  background: radial-gradient(ellipse 70% 45% at 50% -5%, rgba(34, 80, 122, .75), transparent 70%) fixed, radial-gradient(ellipse 60% 40% at 90% 105%, rgba(194, 148, 67, .14), transparent 70%) fixed, linear-gradient(180deg, var(--deep), var(--night) 45%, var(--ink)) fixed, var(--night);
+  background: radial-gradient(ellipse 70% 45% at 50% -5%, rgba(34, 78, 121, .75), transparent 70%) fixed, radial-gradient(ellipse 60% 40% at 90% 105%, rgba(197, 143, 70, .14), transparent 70%) fixed, linear-gradient(180deg, var(--deep), var(--night) 45%, var(--ink)) fixed, var(--night);
   color: var(--cream);
   font-family: var(--sans);
   font-size: 16px;
@@ -69,11 +69,11 @@ h1 {
   font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 7vw, 60px); line-height: 1.08;
   margin: 0; text-wrap: balance; color: var(--cream);
 }
-h1 em { color: var(--honey); font-style: italic; text-shadow: 0 0 22px rgba(233, 196, 98, .45); }
+h1 em { color: var(--honey); font-style: italic; text-shadow: 0 0 22px rgba(240, 194, 101, .45); }
 .sub { margin: 0; color: var(--peri); max-width: 34em; text-wrap: balance; }
 
 .controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; justify-content: center; }
-.modes { display: inline-flex; border: 1px solid var(--gold-soft); border-radius: 999px; padding: 4px; background: rgba(10, 26, 51, .6); }
+.modes { display: inline-flex; border: 1px solid var(--gold-soft); border-radius: 999px; padding: 4px; background: rgba(6, 24, 47, .6); }
 .modes button {
   font: 600 14px var(--sans); letter-spacing: .04em; color: var(--mist); background: none; border: 0;
   padding: 9px 18px; border-radius: 999px; cursor: pointer;
@@ -97,7 +97,7 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
 .card.flipped { cursor: default; }
 .face, .back {
   position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, .45), 0 0 0 1px rgba(233, 196, 98, .5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .45), 0 0 0 1px rgba(240, 194, 101, .5);
   overflow: hidden;
 }
 .back { background: radial-gradient(circle at 50% 42%, var(--sea), var(--deep) 55%, var(--night)); }
@@ -116,14 +116,14 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
 .draw {
   font: 700 15px var(--sans); letter-spacing: .08em; text-transform: uppercase;
   color: var(--night); background: linear-gradient(180deg, var(--honey), var(--gold)); border: 0; border-radius: 999px;
-  padding: 14px 30px; cursor: pointer; box-shadow: 0 8px 24px rgba(233, 196, 98, .25);
+  padding: 14px 30px; cursor: pointer; box-shadow: 0 8px 24px rgba(240, 194, 101, .25);
 }
 .draw:hover { filter: brightness(1.06); }
 .hint { margin: 0; font-size: 14px; color: var(--peri); min-height: 1.6em; text-align: center; }
 
 .readings { width: 100%; display: grid; gap: 18px; }
 .reading {
-  background: linear-gradient(180deg, rgba(34, 80, 122, .45), rgba(16, 38, 74, .75));
+  background: linear-gradient(180deg, rgba(34, 78, 121, .45), rgba(13, 35, 66, .75));
   border: 1px solid var(--gold-soft); border-radius: 16px; padding: 24px clamp(18px, 4vw, 34px);
   display: grid; gap: 12px; min-width: 0;
   animation: rise .6s ease both;
@@ -133,7 +133,7 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
 .r-pos { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .r-name { font-family: var(--serif); font-size: clamp(26px, 4vw, 34px); line-height: 1.1; margin: 0; font-weight: 400; }
 .r-orient { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); border: 1px solid var(--gold-soft); border-radius: 999px; padding: 2px 10px; }
-.r-key { font-family: var(--serif); font-style: italic; color: var(--honey); text-shadow: 0 0 16px rgba(233, 196, 98, .3); font-size: clamp(24px, 3.6vw, 30px); line-height: 1.15; margin: 0; }
+.r-key { font-family: var(--serif); font-style: italic; color: var(--honey); text-shadow: 0 0 16px rgba(240, 194, 101, .3); font-size: clamp(24px, 3.6vw, 30px); line-height: 1.15; margin: 0; }
 .r-desc { margin: 0; font-size: 17px; color: var(--cream); }
 .r-words { margin: 0; font-size: 15px; color: var(--mist); }
 .r-words b { color: var(--gold); font-weight: 600; letter-spacing: .04em; }
@@ -143,9 +143,9 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
 
 .cta {
   width: 100%; max-width: 620px; margin-top: 18px;
-  background: radial-gradient(ellipse at 100% 0%, rgba(233, 196, 98, .22), transparent 60%), linear-gradient(170deg, var(--cream), #E9E1CF);
+  background: radial-gradient(ellipse at 100% 0%, rgba(240, 194, 101, .22), transparent 60%), linear-gradient(170deg, var(--cream), #E9E1CF);
   color: var(--ink); border: 1px solid var(--gold); border-radius: 18px;
-  box-shadow: 0 0 0 5px rgba(233, 196, 98, .12), 0 24px 50px rgba(0, 0, 0, .45);
+  box-shadow: 0 0 0 5px rgba(240, 194, 101, .12), 0 24px 50px rgba(0, 0, 0, .45);
   padding: 34px clamp(20px, 5vw, 44px) 30px; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
 }
@@ -165,7 +165,7 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
   font: 600 15px var(--sans); letter-spacing: .1em; text-transform: uppercase;
   color: var(--cream); background: linear-gradient(180deg, var(--sea), var(--night));
   border: 1px solid var(--gold); border-radius: 999px; padding: 15px 32px;
-  box-shadow: 0 10px 24px rgba(10, 26, 51, .35);
+  box-shadow: 0 10px 24px rgba(6, 24, 47, .35);
 }
 .join:hover { filter: brightness(1.12); }
 .join:focus-visible, footer a:focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; }
@@ -334,8 +334,8 @@ const ICONS = {
   pentacles: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity=".1"/><circle cx="50" cy="50" r="34" opacity=".5"/><path d="M50 18 L69 76 L20 40 H80 L31 76 Z"/></svg>'
 };
 
-const FRAME = '<svg class="frame" viewBox="0 0 140 240" preserveAspectRatio="none" fill="none" stroke="#E2B95A" stroke-width=".8"><rect x="7" y="7" width="126" height="226" rx="6" opacity=".7"/><path d="M18 226 V70 A52 52 0 0 1 122 70 V226 Z" opacity=".4"/></svg>';
-const BACK = '<svg viewBox="0 0 140 240" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#E2B95A"><rect x="7" y="7" width="126" height="226" rx="6" stroke-width=".8" opacity=".7"/><rect x="13" y="13" width="114" height="214" rx="4" stroke-width=".5" opacity=".4"/><circle cx="70" cy="120" r="46" stroke-width=".7" opacity=".55"/><circle cx="70" cy="120" r="34" stroke-width=".5" opacity=".4"/><path d="M70 66 V174 M16 120 H124" stroke-width=".4" opacity=".35"/><path d="M70 92 L74 116 L98 120 L74 124 L70 148 L66 124 L42 120 L66 116 Z" fill="#E2B95A" fill-opacity=".25" stroke-width=".8"/><path d="M78 38 A13 13 0 1 1 62 38 A10 10 0 1 0 78 38 Z" fill="#E2B95A" fill-opacity=".5" stroke="none"/><path d="M70 196 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 Z" fill="#E2B95A" stroke="none" opacity=".7"/></svg>';
+const FRAME = '<svg class="frame" viewBox="0 0 140 240" preserveAspectRatio="none" fill="none" stroke="#F0C265" stroke-width=".8"><rect x="7" y="7" width="126" height="226" rx="6" opacity=".7"/><path d="M18 226 V70 A52 52 0 0 1 122 70 V226 Z" opacity=".4"/></svg>';
+const BACK = '<svg viewBox="0 0 140 240" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#F0C265"><rect x="7" y="7" width="126" height="226" rx="6" stroke-width=".8" opacity=".7"/><rect x="13" y="13" width="114" height="214" rx="4" stroke-width=".5" opacity=".4"/><circle cx="70" cy="120" r="46" stroke-width=".7" opacity=".55"/><circle cx="70" cy="120" r="34" stroke-width=".5" opacity=".4"/><path d="M70 66 V174 M16 120 H124" stroke-width=".4" opacity=".35"/><path d="M70 92 L74 116 L98 120 L74 124 L70 148 L66 124 L42 120 L66 116 Z" fill="#F0C265" fill-opacity=".25" stroke-width=".8"/><path d="M78 38 A13 13 0 1 1 62 38 A10 10 0 1 0 78 38 Z" fill="#F0C265" fill-opacity=".5" stroke="none"/><path d="M70 196 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 Z" fill="#F0C265" stroke="none" opacity=".7"/></svg>';
 
 const POSITIONS = { day: ["Today"], three: ["Past", "Present", "Future"] };
 const $ = id => document.getElementById(id);
@@ -474,7 +474,7 @@ setMode(store.get("mode") === "three" ? "three" : "day");
     for (const s of stars) {
       const a = still ? .7 : .35 + .55 * (0.5 + 0.5 * Math.sin(s.p + t / 1000 * s.s));
       ctx.globalAlpha = a;
-      ctx.fillStyle = s.gold ? "#E2B95A" : "#F3EFE4";
+      ctx.fillStyle = s.gold ? "#F0C265" : "#F5EFE4";
       ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill();
     }
     if (!still) requestAnimationFrame(frame);
