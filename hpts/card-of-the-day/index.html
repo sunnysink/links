@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tarot Card of the Day</title>
+<meta name="description" content="Pull a free tarot card for today or a three-card reading. All 78 cards with a keyword, a short meaning, element, astrology and a yes-or-no answer.">
+<meta name="theme-color" content="#0A1A33">
+<link rel="canonical" href="https://links.sunnysink.com/hpts/card-of-the-day/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="High Priestess Tarot School">
+<meta property="og:title" content="Tarot Card of the Day">
+<meta property="og:description" content="Pull a free tarot card for today or a three-card reading. All 78 cards with a keyword, a short meaning, element, astrology and a yes-or-no answer.">
+<meta property="og:url" content="https://links.sunnysink.com/hpts/card-of-the-day/">
+<meta property="og:image" content="https://links.sunnysink.com/hpts/card-of-the-day/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tarot Card of the Day">
+<meta name="twitter:description" content="Pull a free tarot card for today or a three-card reading. All 78 cards with a keyword, a short meaning, element, astrology and a yes-or-no answer.">
+<meta name="twitter:image" content="https://links.sunnysink.com/hpts/card-of-the-day/preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: one centered column under a night sky. Title, mode switch, the spread, then the meanings. HPTS Celestial Oracle, dark only by design. */
+:root {
+  /* HPTS brand board, October 2026: navy velvet and night sky, honey-gold glow, cream florals. Hexes matched by eye from the board. */
+  --night: #0A1A33;
+  --deep: #10264A;
+  --sea: #22507A;
+  --ink: #151A2B;
+  --cream: #F3EFE4;
+  --mist: #D6D4E8;
+  --peri: #8A9EC2;
+  --gold: #C29443;
+  --honey: #E9C462;
+  --gold-soft: rgba(233, 196, 98, .32);
+  --serif: "DM Serif Display", "Bodoni Moda", Didot, "Times New Roman", serif;
+  --sans: "Jost", "Futura", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse 70% 45% at 50% -5%, rgba(34, 80, 122, .75), transparent 70%) fixed, radial-gradient(ellipse 60% 40% at 90% 105%, rgba(194, 148, 67, .14), transparent 70%) fixed, linear-gradient(180deg, var(--deep), var(--night) 45%, var(--ink)) fixed, var(--night);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 980px; margin: 0 auto;
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+header { text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.eyebrow {
+  font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-weight: 600;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before, .eyebrow::after { content: ""; width: 34px; height: 1px; background: var(--gold-soft); }
+h1 {
+  font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 7vw, 60px); line-height: 1.08;
+  margin: 0; text-wrap: balance; color: var(--cream);
+}
+h1 em { color: var(--honey); font-style: italic; text-shadow: 0 0 22px rgba(233, 196, 98, .45); }
+.sub { margin: 0; color: var(--peri); max-width: 34em; text-wrap: balance; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; justify-content: center; }
+.modes { display: inline-flex; border: 1px solid var(--gold-soft); border-radius: 999px; padding: 4px; background: rgba(10, 26, 51, .6); }
+.modes button {
+  font: 600 14px var(--sans); letter-spacing: .04em; color: var(--mist); background: none; border: 0;
+  padding: 9px 18px; border-radius: 999px; cursor: pointer;
+}
+.modes button[aria-pressed="true"] { background: linear-gradient(180deg, var(--honey), var(--gold)); color: var(--night); }
+.toggle { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--mist); cursor: pointer; user-select: none; }
+.toggle input { appearance: none; width: 40px; height: 22px; border-radius: 999px; background: var(--deep); border: 1px solid var(--gold-soft); position: relative; cursor: pointer; margin: 0; transition: background .2s; }
+.toggle input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--mist); transition: transform .2s; }
+.toggle input:checked { background: var(--sea); border-color: var(--gold); }
+.toggle input:checked::after { transform: translateX(18px); background: var(--gold); }
+button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px solid var(--honey); outline-offset: 3px; }
+
+.table { display: flex; justify-content: center; gap: clamp(10px, 3vw, 34px); width: 100%; }
+.slot { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 0 1 220px; min-width: 0; }
+.slot-label { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.single .slot { flex-basis: 250px; }
+
+.card { width: 100%; max-width: 100%; aspect-ratio: 7 / 12; perspective: 1200px; cursor: pointer; border-radius: 14px; }
+.card .inner { position: relative; width: 100%; height: 100%; transition: transform .9s cubic-bezier(.3, .7, .2, 1); transform-style: preserve-3d; }
+.card.flipped .inner { transform: rotateY(180deg); }
+.card.flipped { cursor: default; }
+.face, .back {
+  position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .45), 0 0 0 1px rgba(233, 196, 98, .5);
+  overflow: hidden;
+}
+.back { background: radial-gradient(circle at 50% 42%, var(--sea), var(--deep) 55%, var(--night)); }
+.back svg, .face svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+.card:not(.flipped):hover .inner { transform: translateY(-6px); }
+.face { transform: rotateY(180deg); background: radial-gradient(ellipse at 50% 30%, var(--sea), var(--deep) 50%, var(--night)); display: flex; }
+.face .art { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12% 10% 9%; text-align: center; }
+.face.rev .art { transform: rotate(180deg); }
+.face .num { font-family: var(--serif); color: var(--gold); font-size: clamp(14px, 2.4vw, 22px); letter-spacing: .12em; }
+.face .sym { width: 52%; aspect-ratio: 1; color: var(--gold); }
+.face .sym svg { width: 100%; height: 100%; display: block; }
+.face .nm { font-family: var(--serif); color: var(--cream); font-size: clamp(13px, 2.3vw, 20px); line-height: 1.15; font-weight: 400; text-wrap: balance; }
+.empty .card { cursor: default; opacity: .35; }
+
+.actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.draw {
+  font: 700 15px var(--sans); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--night); background: linear-gradient(180deg, var(--honey), var(--gold)); border: 0; border-radius: 999px;
+  padding: 14px 30px; cursor: pointer; box-shadow: 0 8px 24px rgba(233, 196, 98, .25);
+}
+.draw:hover { filter: brightness(1.06); }
+.hint { margin: 0; font-size: 14px; color: var(--peri); min-height: 1.6em; text-align: center; }
+
+.readings { width: 100%; display: grid; gap: 18px; }
+.reading {
+  background: linear-gradient(180deg, rgba(34, 80, 122, .45), rgba(16, 38, 74, .75));
+  border: 1px solid var(--gold-soft); border-radius: 16px; padding: 24px clamp(18px, 4vw, 34px);
+  display: grid; gap: 12px; min-width: 0;
+  animation: rise .6s ease both;
+}
+@keyframes rise { from { opacity: .2; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.r-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.r-pos { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.r-name { font-family: var(--serif); font-size: clamp(26px, 4vw, 34px); line-height: 1.1; margin: 0; font-weight: 400; }
+.r-orient { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); border: 1px solid var(--gold-soft); border-radius: 999px; padding: 2px 10px; }
+.r-key { font-family: var(--serif); font-style: italic; color: var(--honey); text-shadow: 0 0 16px rgba(233, 196, 98, .3); font-size: clamp(24px, 3.6vw, 30px); line-height: 1.15; margin: 0; }
+.r-desc { margin: 0; font-size: 17px; color: var(--cream); }
+.r-words { margin: 0; font-size: 15px; color: var(--mist); }
+.r-words b { color: var(--gold); font-weight: 600; letter-spacing: .04em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+.chip { font-size: 13px; color: var(--peri); border: 1px solid rgba(169, 190, 221, .3); border-radius: 8px; padding: 4px 10px; }
+.chip b { color: var(--cream); font-weight: 600; }
+
+.cta {
+  width: 100%; max-width: 620px; margin-top: 18px;
+  background: radial-gradient(ellipse at 100% 0%, rgba(233, 196, 98, .22), transparent 60%), linear-gradient(170deg, var(--cream), #E9E1CF);
+  color: var(--ink); border: 1px solid var(--gold); border-radius: 18px;
+  box-shadow: 0 0 0 5px rgba(233, 196, 98, .12), 0 24px 50px rgba(0, 0, 0, .45);
+  padding: 34px clamp(20px, 5vw, 44px) 30px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.cta-eyebrow { font-size: 13px; letter-spacing: .26em; text-transform: uppercase; color: #8A6524; font-weight: 600; }
+.cta h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 5.4vw, 42px); line-height: 1.1; margin: 0; color: var(--night); text-wrap: balance; }
+.cta h2 em { color: var(--sea); }
+.divider { display: flex; align-items: center; gap: 10px; width: 60%; color: var(--gold); }
+.divider span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.divider span:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+.divider svg { width: 14px; height: 14px; }
+.cta p { margin: 0; font-size: 16px; color: #33394F; }
+.cta ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; text-align: left; font-size: 16px; color: var(--ink); }
+.cta li { display: flex; gap: 10px; align-items: baseline; }
+.cta li::before { content: "\2726"; color: var(--gold); font-size: 12px; flex: none; }
+.join {
+  margin-top: 8px; display: inline-block; text-decoration: none;
+  font: 600 15px var(--sans); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cream); background: linear-gradient(180deg, var(--sea), var(--night));
+  border: 1px solid var(--gold); border-radius: 999px; padding: 15px 32px;
+  box-shadow: 0 10px 24px rgba(10, 26, 51, .35);
+}
+.join:hover { filter: brightness(1.12); }
+.join:focus-visible, footer a:focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; }
+.cta .price { font-size: 14px; color: #5A5F73; }
+footer a { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--honey); text-decoration: none; padding: 8px; }
+footer a:hover { color: var(--cream); }
+
+.shuffling .card .inner { animation: shuffle .6s ease; }
+@keyframes shuffle { 0%, 100% { transform: none; } 30% { transform: translateX(-10px) rotate(-3deg); } 65% { transform: translateX(10px) rotate(3deg); } }
+
+@media (max-width: 560px) {
+  .wrap { padding-block: 28px 48px; gap: 22px; }
+  .single .slot { flex-basis: 210px; }
+  .slot-label { font-size: 11px; letter-spacing: .14em; }
+  .modes button { padding: 9px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card .inner, .reading, .shuffling .card .inner { transition: none; animation: none; }
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Free from High Priestess Tarot School</div>
+    <h1>Pull your card for <em>today</em></h1>
+    <p class="sub">Shuffle the full 78-card deck, then tap a card to turn it over and read its message.</p>
+  </header>
+
+  <div class="controls">
+    <div class="modes" role="group" aria-label="Reading type">
+      <button type="button" id="mode-day" data-mode="day" aria-pressed="true">Card of the Day</button>
+      <button type="button" id="mode-three" data-mode="three" aria-pressed="false">Three-Card Pull</button>
+    </div>
+    <label class="toggle" for="rev"><input type="checkbox" id="rev" checked> Include reversals</label>
+  </div>
+
+  <section class="table single empty" id="table" aria-live="polite"></section>
+
+  <div class="actions">
+    <button type="button" class="draw" id="draw">Shuffle and draw</button>
+    <p class="hint" id="hint"></p>
+  </div>
+
+  <section class="readings" id="readings"></section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta-eyebrow">High Priestess Tarot School</div>
+    <h2 id="cta-title">Read all 78 cards by <em>heart</em></h2>
+    <div class="divider" aria-hidden="true"><span></span><svg viewBox="0 0 14 14"><path d="M7 0l1.4 5.6L14 7l-5.6 1.4L7 14 5.6 8.4 0 7l5.6-1.4z" fill="currentColor"/></svg><span></span></div>
+    <p>Join the school and learn every card in this deck with Sunny. Inside:</p>
+    <ul>
+      <li>The 33-lesson core course</li>
+      <li>Five bonus trainings</li>
+      <li>The Magic of Tarot &amp; Astrology</li>
+      <li>The Tarot Reflections Journal</li>
+      <li>Q&amp;A by video: post your tarot question and Sunny answers it with a video</li>
+    </ul>
+    <a class="join" href="https://highpriestessts.com/hpts-option" rel="noopener">Join the Tarot School</a>
+    <p class="price">$7 a month, cancel anytime</p>
+  </section>
+
+  <footer><a href="https://www.instagram.com/highpriestessts" rel="noopener">@HighPriestessTS</a></footer>
+</main>
+
+<script>
+// The deck. Element, astrology, yes-or-no and both keyword lists come from Sunny's Tarot Cheat Sheet.
+// Fields: name | element | astrology | yes or no | keyword | upright keywords | upright meaning | reversed keywords | reversed meaning
+const DATA = `The Fool|Air|Uranus|Yes|Leap of faith|Leap of faith, fresh start, adventure|A fresh start is open to you right now. Take the first step before you have the whole map.|Self-doubt, fear of the unknown, holding back|Fear of the unknown is keeping your feet still. Name the one small step you can take anyway.
+The Magician|Air|Mercury|Yes|Innovation|Innovation, success, ability|You have the tools and the skill to make this happen. Put them to work on the idea that keeps calling you.|Unused potential, lacking focus|Your power is scattered across too many things. Pick one and give it your full attention.
+The High Priestess|Water|Moon|Yes|Intuition|Intuition, mystery, inner voice|Your inner voice already knows the answer. Get quiet and listen before you ask anyone else.|Secrets, blocked intuition, gossip|Outside noise is drowning out what you know. Step back from the chatter and check in with yourself.
+The Empress|Earth|Venus|Yes|Nurture|Nurture, fertility, self care|Pour care into yourself and what you are growing. Rest, nourishment and pleasure feed everything you create.|Lack of self care, negligence, over protective|You have been caring for everyone else first. Put yourself back on the list today.
+The Emperor|Fire|Aries|Yes|Authority|Power, responsibility, authority|Step into your authority. Set the structure, make the call and own the responsibility.|Rigidity, corrupt, selfish, defensive|Control has turned rigid. Loosen your grip where it is costing you trust.
+The Hierophant|Earth|Taurus|Yes|Tradition|Order, structure, rules, tradition|Lean on what has been proven. A teacher, a tradition or a clear set of rules can guide you now.|Outdated, rebellious, abuse of power|A rule you were handed may have stopped fitting. Question it and decide what you believe.
+The Lovers|Air|Gemini|Maybe|Commitment|Passion, commitment, truth|Choose with your whole heart. This card asks for a commitment that matches what you value.|Disharmony, giving away your power, loss of self|You have been bending to keep the peace. Come back to what you want.
+The Chariot|Water|Cancer|Yes|Determination|Drive, ambition, determination|Your drive is strong. Point it in one direction and move forward with confidence.|Lack of direction, inner resistance, setbacks|Part of you is pulling the other way. Get clear on where you are headed before you push harder.
+Strength|Fire|Leo|Yes|Resilience|Fortitude, patience, resilience|Your strength is quiet and steady. Patience will carry you further than force.|Need for self control, self doubt|Self-doubt is louder than usual. Treat yourself with the same patience you give everyone else.
+The Hermit|Earth|Virgo|Yes|Introspection|Insight, introspection, solitude|Time alone will give you the insight you are looking for. Turn inward and listen.|Isolation, loneliness, withdrawal|Solitude has tipped into isolation. Reach out to one person today.
+Wheel of Fortune|Fire|Jupiter|Maybe|Cycles|Luck, change, cycles|The wheel is turning. Change is on its way, and luck moves with it.|Setback, misfortune, hardship|This is a low turn of the wheel. Ride it out, because the wheel keeps moving.
+Justice|Air|Libra|Maybe|Integrity|Integrity, karma, fairness, consequence|Act with integrity. What you put out comes back to you, and fairness sides with the truth.|Inequity, bias, oppression|Something here is out of balance. Look honestly at where fairness is missing.
+The Hanged Man|Water|Pisces|Yes|Reflection|Sacrifice, suspension, reflection|Pause and look at this from a new angle. What you release now makes room for what comes next.|Self sabotage, stagnation, stubbornness|You are stuck because you are holding a position. Notice where you are getting in your own way.
+Death|Water|Scorpio|No|Transformation|Rebirth, transformation, change|An ending is clearing the way for something new. Let this chapter close so the next one can start.|Fear of change, clinging to the past|You are holding on to what has already ended. Loosen your grip and let it go.
+Temperance|Fire|Sagittarius|Yes|Moderation|Peace, moderation, equilibrium|Find the middle path. Blend what you have with patience and the right mix will show itself.|Clashing, disharmony, polarity|You are swinging between extremes. Look for the small adjustment that brings you back to center.
+The Devil|Earth|Capricorn|No|Temptation|Bondage, temptation, obsession|Notice what has a hold on you. Naming the chain is the first step to taking it off.|Starting fresh, freedom, reclaiming power|You are breaking free. Take your power back from the habit or person that held it.
+The Tower|Fire|Mars|No|Revelation|Shock, revelation, shake-up|Something built on shaky ground is coming down. The shake-up reveals the truth you need.|Delay, resisting change, fear of the unknown, denial|You can feel the change coming and you are bracing against it. Let it move.
+The Star|Air|Aquarius|Yes|Hope|Healing, hope, trust, possibilities, positivity|Healing is here. Trust that what you hope for is possible and keep your light on.|Loss of faith, loss of hope, despair|Hope feels far away right now. Do one small thing that reminds you what you are working toward.
+The Moon|Water|Pisces|No|Illusion|Illusion, dreams, path to truth|Things look hazier than they are. Let your dreams and intuition walk you toward the truth.|Unsure of what is real, fears keeping you frozen|Fear is keeping you frozen. Separate what you know from what you are afraid of.
+The Sun|Fire|Sun|Yes|Radiance|Light, clarity, radiance, illumination|Joy and clarity are shining on you. Let yourself be seen and enjoy it.|Negativity, lack of confidence, self-doubt|Self-doubt is dimming your light. Remember one thing you did well this week.
+Judgement|Fire or Water|Pluto|Yes|Evolution|Evolution, enlightenment|You are stepping into a new version of yourself. Answer the call to grow.|Self-judgment, peel away masks, dimming your light|Your inner critic is loud. Take off the mask and meet yourself with kindness.
+The World|Earth|Saturn|Yes|Completion|Completion, fulfillment, accomplishment|A cycle is complete. Celebrate how far you have come before you start the next one.|Delay, hesitation, stagnation|You are close to the finish line and stalling. Name what is left and close the loop.
+Ace of Wands|Fire|Aries, Leo, Sagittarius|Yes|Inspiration|Passion, creativity, inspiration|A spark of inspiration is here. Act on the idea while the fire is hot.|Distraction, delayed, unmotivated|Your spark is buried under distractions. Clear a small space to start.
+Two of Wands|Fire|Mars in Aries|Yes|Planning|Possibility, planning, discovery|The world is opening up in front of you. Make a plan for where you want to go.|Fear of the unknown, reluctance|Fear of the unknown is keeping you close to home. Look again at the option you keep avoiding.
+Three of Wands|Fire|Sun in Aries|Yes|Embark|Embark, confidence, leadership, foresight|Your plans are in motion. Look ahead with confidence and lead the way.|Loss of direction, lack of ambition|You have lost sight of the horizon. Reconnect with why you started.
+Four of Wands|Fire|Venus in Aries|Yes|Celebration|Milestone, celebration, enjoyment|You reached a milestone. Stop and celebrate it with your people.|Mishaps, delays, disruptions|A celebration or plan has been knocked off course. Stay flexible and pick a new date.
+Five of Wands|Fire|Sun in Leo|No|Competition|Conflict, ego, competition|Egos and opinions are clashing. Use the friction to sharpen your ideas.|Elusion, inner conflict, avoidance|You are dodging a conflict, maybe one inside yourself. Face it directly.
+Six of Wands|Fire|Jupiter in Leo|Yes|Recognition|Success, recognition, spotlight|Your success is being seen. Step into the spotlight and accept the recognition.|Fear of being seen, arrogance, insecurity|Being seen feels uncomfortable right now. Let people celebrate you anyway.
+Seven of Wands|Fire|Mars in Leo|No|Courage|Defend, courage, criticism|Stand your ground. Your position is worth defending, even under criticism.|Overwhelm, defeat, being overthrown|You are tired of defending yourself. Choose which battles still matter.
+Eight of Wands|Fire|Mercury in Sagittarius|Yes|Momentum|Momentum, speed, enthusiasm|Things are moving fast. Ride the momentum and say yes to what is arriving.|Delays, obstacles, frustration|Progress has slowed and it is frustrating. Use the pause to prepare.
+Nine of Wands|Fire|Moon in Sagittarius|No|Protect|Protect, wounded, long journey|You have come a long way and carry the scars to prove it. Protect your energy for the final stretch.|Struggle, defensive, paranoid|Your guard is up so high that help can't reach you. Lower it for someone you trust.
+Ten of Wands|Fire|Saturn in Sagittarius|Yes|Burden|Persevere, burden, responsibility|You are carrying a lot. Keep going, and look at what you can set down or hand off.|Relief, taking on too much|Relief is close once you put some of this weight down. Delegate one thing today.
+Page of Wands|Earth of Fire|N/A|Yes|Curiosity|Curiosity, creativity, originality|Follow your curiosity. A new creative idea wants you to play with it.|Anxiety, impatience, indecision|Impatience is making it hard to choose. Pick one idea and start small.
+Knight of Wands|Air of Fire|N/A|Yes|Bravery|Passion, bravery, determination|Charge ahead with passion and bravery. Your energy is contagious right now.|Haste, disruptions, restlessness|You are rushing. Slow down long enough to aim.
+Queen of Wands|Water of Fire|N/A|Yes|Sovereignty|Sovereignty, independence, warmth|Own your warmth and your independence. You lead best when you are fully yourself.|Disloyal, catty, controlling|Jealousy or control is creeping in. Come back to your own confidence.
+King of Wands|Fire of Fire|N/A|Yes|Boldness|Boldness, inspiration, leadership|Lead boldly. Your vision inspires others to follow.|Impulse, ruthless, aggressive|Your fire is burning the people around you. Lead with vision and leave the force behind.
+Ace of Cups|Water|Cancer, Scorpio, Pisces|Yes|Blessings|Emotion, blessings, intimacy|Your heart is opening. New love, connection and blessings are flowing in.|Struggle, repressed emotions, feeling blocked|Feelings are bottled up. Give them somewhere to go: a journal, a friend, a good cry.
+Two of Cups|Water|Venus in Cancer|Yes|Connection|Unity, connection, partnership|A meaningful connection is forming. Meet the other person heart to heart.|Separation, sorrow, broken trust|Trust has been broken between you. Decide what repair would look like.
+Three of Cups|Water|Mercury in Cancer|Yes|Friendship|Celebration, friendship, joy|Gather your people and celebrate. Friendship is the medicine.|Lack of harmony, independence, isolation|You have pulled away from your circle. Reach back in.
+Four of Cups|Water|Moon in Cancer|No|Apathy|Apathy, boredom, withdrawal|Nothing on the table feels exciting. Look again, because an offer may be sitting right beside you.|Focus, motivation, release of stress|Motivation is coming back. Use the fresh focus on what matters most.
+Five of Cups|Water|Mars in Scorpio|No|Grief|Grief, regret, despair|Let yourself grieve what was lost. When you are ready, turn around and see what remains.|Letting go, acceptance, being open to change|You are ready to let go. Acceptance is opening the door to change.
+Six of Cups|Water|Sun in Scorpio|Maybe/Yes|Nostalgia|Good will, reflection, nostalgia|Sweet memories are surfacing. Let them remind you of what you love.|Stuck in the past, distraction, repressed emotions|You are living in the past. Bring one good thing from then into now.
+Seven of Cups|Water|Venus in Scorpio|No|Choices|Possibilities, choices, temptation|You have plenty of options. Look closely at each one before you choose.|Overwhelm, feeling trapped, diversions|Too many options are keeping you trapped. Cross off everything that pulls you off course.
+Eight of Cups|Water|Saturn in Pisces|No|Release|Departure, release, transition|It is time to walk away from what stopped filling you up. The road ahead is waiting.|Fear of loss, indecision, aimless|You know it is time to go and you are afraid of what you will lose. Name what is keeping you there.
+Nine of Cups|Water|Jupiter in Pisces|Yes|Joy|Comfort, joy, fulfillment|Your wish is within reach. Enjoy the comfort and joy you have built.|Materialism, dissatisfaction, unrealistic expectations|Nothing feels like enough. Check whether your expectations are realistic.
+Ten of Cups|Water|Mars in Pisces|Yes|Harmony|Stability, harmony, fulfillment|Love and harmony fill your home. Soak in this happy, stable season.|Dysfunction, instability, disharmony|Home feels unsettled. Start with one honest conversation.
+Page of Cups|Earth of Water|N/A|No|Intuitive|Intuitive, idealistic, inspirational|A creative or intuitive message is arriving. Stay open to the unexpected.|Emotional immaturity, feeling stuck, blocks|Your feelings are running the show. Give them a voice, then decide.
+Knight of Cups|Air of Water|N/A|Yes|Romantic|Fun, romantic, idealistic|Follow your heart. Romance, beauty and fun are calling.|Jealousy, revoked offers, moodiness|Moods are swinging and offers are shifting. Wait for steady ground before you commit.
+Queen of Cups|Water of Water|N/A|Yes|Compassionate|Compassionate, supportive, empathetic|Lead with compassion. Your empathy is a gift to the people around you.|Bitter, insecurity, co-dependent|You are giving until it hurts. Keep some of that care for yourself.
+King of Cups|Fire of Water|N/A|Yes|Diplomatic|Wise, diplomatic, stable|Stay calm and steady. Your emotional wisdom can settle any room.|Erratic, manipulative, vindictive|Emotions are steering you somewhere unhealthy. Step back before you respond.
+Ace of Swords|Air|Gemini, Libra, Aquarius|Yes|Clarity|Mental clarity, truth, focus|A breakthrough is here. See the truth clearly and act on it.|Clouded judgment, overwhelm, lack of clarity|Your thinking is foggy. Wait for clarity before you make the call.
+Two of Swords|Air|Moon in Libra|No|Decision|Decision, stalemate, avoidance|You are stuck between two choices. Take off the blindfold and decide.|Indecision, confusion|Confusion is keeping you from choosing. Gather the one fact you are missing.
+Three of Swords|Air|Saturn in Libra|No|Hard lessons|Lessons, hard lessons, betrayal|This one hurts. Let the pain teach you what it came to teach.|Release of pain, forgiveness, optimism|The hurt is lifting. Forgiveness is making room for hope.
+Four of Swords|Air|Jupiter in Libra|No|Rest|Rest, taking a break, retreat|Rest is the assignment right now. Take a break and let your mind recover.|Burnout, exhaustion, passive|You are running on empty. Stop before your body stops you.
+Five of Swords|Air|Venus in Aquarius|No|Self-interest|Tyranny, selfishness, self interest|Someone is playing to win at any cost. Ask whether this fight is worth what it takes.|No one wins, prolonged conflict|This conflict has dragged on with no winner. It may be time to walk away.
+Six of Swords|Air|Mercury in Aquarius|Yes|Recovery|Escape, guidance, recovery|You are moving toward calmer waters. Accept the help that carries you there.|Unfinished business, unresolved conflict|Something unfinished is holding you in place. Settle it so you can move on.
+Seven of Swords|Air|Moon in Aquarius|No|Deception|Trickery, deception, avoidance|Something is hidden here. Watch for trickery, yours or someone else's.|Secretive, imposter syndrome|You feel like an imposter. Come clean about what you have been hiding.
+Eight of Swords|Air|Jupiter in Gemini|No|Overwhelm|Overwhelm, isolation, confusion|You feel boxed in. Look again, because the way out is closer than it seems.|Self critical, feeling undeserving|Your inner critic is building the cage. Remind yourself what you deserve.
+Nine of Swords|Air|Mars in Gemini|No|Worry|Anxiety, worry, anguish, nightmares|Worry is keeping you up at night. Write the fears down and look at them in daylight.|Turmoil, secrets, downward spiral|Anxiety is spiraling. Tell someone what is going on.
+Ten of Swords|Air|Sun in Gemini|No|Closure|Closure, painful ending, finality|This is the end of the line. Let it be over so healing can begin.|The end of a hard time, time to reevaluate|The worst is behind you. Take stock and decide what comes next.
+Page of Swords|Earth of Air|N/A|Yes|Truthful|Curiosity, truthful, just|Ask questions and speak the truth. A sharp new idea is forming.|Lack of ideas, uncertainty, vagueness|Your thinking feels vague. Write it out until it gets specific.
+Knight of Swords|Air of Air|N/A|No|Swiftness|Impulsive, mental agility, swiftness|Move fast and think quickly. Charge after the idea.|Reckless, impatient, lack of direction|You are rushing in without a plan. Pick a direction first.
+Queen of Swords|Water of Air|N/A|Yes|Honest|Intellectual, honest, precise, rational|Speak plainly and think clearly. Your honesty cuts through the confusion.|Cold hearted, resentful|Old hurts are making you cold. Let some warmth back in.
+King of Swords|Fire of Air|N/A|Yes|Strategic|Logical, moral, articulate, strategic|Lead with logic and fairness. Think it through, then speak with authority.|Cynical, spineless, dictatorial|Power is being misused, by you or by someone over you. Call it what it is.
+Ace of Pentacles|Earth|Taurus, Virgo, Capricorn|Yes|Opportunity|Opportunity, potential, prosperity|A new opportunity is in your hands. Plant the seed for prosperity.|Missed opportunity, hesitation, second guessing|Second-guessing is costing you. Say yes before the window closes.
+Two of Pentacles|Earth|Jupiter in Capricorn|Maybe/Yes|Priorities|Balance, priorities, preparation|You are juggling a lot. Sort your priorities and keep things moving.|Over-committed, disorganization|You have said yes to too much. Set one thing down on purpose.
+Three of Pentacles|Earth|Mars in Capricorn|Yes|Teamwork|Teamwork, collaboration, contribution|You are stronger together. Bring your skills to the team and build something lasting.|Lack of harmony, lack of respect, misaligned|The team is out of sync. Get everyone back on the same plan.
+Four of Pentacles|Earth|Sun in Capricorn|Yes|Guarded|Scarcity, stability, guarded|You are holding tight to what you have. Make sure that security is serving you.|Greed, hoarding, lack of security|Fear of losing it all is making you grip harder. Loosen your hold a little.
+Five of Pentacles|Earth|Mercury in Taurus|No|Insecurity|Financial loss, despair, insecurity|Money or support feels thin right now. Help is closer than you think, so ask for it.|Recovery, financially secure, improvement|Things are improving. Recovery is underway.
+Six of Pentacles|Earth|Moon in Taurus|Yes|Reciprocity|Balance, charity, reciprocity|Giving and receiving are in balance. Share what you have and accept what is offered.|Unpaid debts, taken advantage of, overly generous|You are giving more than you get back. Check where the balance slipped.
+Seven of Pentacles|Earth|Saturn in Taurus|Yes|Harvest|Evaluate, assess, harvest|Your effort is starting to grow. Step back and assess what deserves more of your time.|Limited success, lack of vision, delays|The results are slower than you hoped. Adjust the plan and keep tending it.
+Eight of Pentacles|Earth|Sun in Virgo|Yes|Mastery|Mastery, expansion, skills|Practice builds mastery. Put in the hours and your skill will show.|Misdirection, perfectionism, frustration|Perfectionism is slowing you down. Finish it first, then polish.
+Nine of Pentacles|Earth|Venus in Virgo|Yes|Luxury|Joy, luxury, independence|You earned this. Enjoy the luxury and freedom your work has built.|Overworking, superficiality, dependency|You are working so hard you can't enjoy it. Ask what all this effort is for.
+Ten of Pentacles|Earth|Mercury in Virgo|Yes|Legacy|Legacy, prosperity, affluence|You are building something that lasts. Wealth, family and legacy are in focus.|Collapse, bankrupt, setbacks|A foundation is shaky. Shore it up before you build higher.
+Page of Pentacles|Earth of Earth|N/A|Yes|Studious|Studious, prosperous, practical|Be a student of your goals. Practical steps today build the future.|Lost, procrastination, trying too hard|You are stuck in planning mode. Take one practical step today.
+Knight of Pentacles|Air of Earth|N/A|Yes|Dependable|Loyal, dependable, realistic|Slow and steady wins here. Keep showing up and doing the work.|Feeling stuck, bored, unstable|Routine has turned into a rut. Change one small thing.
+Queen of Pentacles|Water of Earth|N/A|Yes|Resourceful|Comforting, resourceful, trustworthy|Make a warm, steady home for yourself and others. Your practical care keeps everyone grounded.|Inner conflict, jealousy, out of control|Life feels out of balance. Tend to your own needs first.
+King of Pentacles|Fire of Earth|N/A|Yes|Abundant|Stable, abundant, reliable|You have built real abundance. Lead with steadiness and generosity.|Obsessed with status, workaholic, irresponsible|Status has become the goal. Remember who the money is for.`;
+
+const ROMAN = ["0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI"];
+const SUITS = ["wands","cups","swords","pentacles"];
+const RANKS = ["Ace","II","III","IV","V","VI","VII","VIII","IX","X","Page","Knight","Queen","King"];
+
+const DECK = DATA.split("\n").map((line, i) => {
+  const [name, element, sign, yesno, keyword, up, upDesc, rev, revDesc] = line.split("|");
+  const major = i < 22;
+  const suit = major ? "major" : SUITS[Math.floor((i - 22) / 14)];
+  const rank = major ? ROMAN[i] : RANKS[(i - 22) % 14];
+  return { i, name, element, sign, yesno, keyword, up, upDesc, rev, revDesc, suit, rank, revKey: rev.split(",")[0].trim() };
+});
+
+const ICONS = {
+  major: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="50" cy="50" r="44" opacity=".45"/><circle cx="50" cy="50" r="33" opacity=".3"/><path d="M50 10 L56 44 L90 50 L56 56 L50 90 L44 56 L10 50 L44 44 Z" fill="currentColor" fill-opacity=".18"/><circle cx="50" cy="50" r="3" fill="currentColor"/></svg>',
+  wands: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M38 90 L62 12"/><path d="M57 28 C66 22 72 24 74 30 C66 34 61 33 57 28 Z" fill="currentColor" fill-opacity=".25"/><path d="M50 52 C41 47 35 50 34 56 C42 59 47 57 50 52 Z" fill="currentColor" fill-opacity=".25"/><path d="M44 70 C52 66 58 68 59 74 C52 77 47 75 44 70 Z" fill="currentColor" fill-opacity=".25"/><circle cx="62" cy="12" r="3" fill="currentColor"/></svg>',
+  cups: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M26 18 H74 C74 44 64 56 50 56 C36 56 26 44 26 18 Z" fill="currentColor" fill-opacity=".18"/><path d="M50 56 V78"/><path d="M34 86 C38 79 62 79 66 86 Z" fill="currentColor" fill-opacity=".25"/><path d="M34 27 C40 31 60 31 66 27" opacity=".6"/></svg>',
+  swords: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M50 8 L56 22 V66 H44 V22 Z" fill="currentColor" fill-opacity=".18"/><path d="M30 66 H70"/><path d="M50 66 V84"/><circle cx="50" cy="89" r="4" fill="currentColor" fill-opacity=".4"/><path d="M50 26 V60" opacity=".5"/></svg>',
+  pentacles: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity=".1"/><circle cx="50" cy="50" r="34" opacity=".5"/><path d="M50 18 L69 76 L20 40 H80 L31 76 Z"/></svg>'
+};
+
+const FRAME = '<svg class="frame" viewBox="0 0 140 240" preserveAspectRatio="none" fill="none" stroke="#E2B95A" stroke-width=".8"><rect x="7" y="7" width="126" height="226" rx="6" opacity=".7"/><path d="M18 226 V70 A52 52 0 0 1 122 70 V226 Z" opacity=".4"/></svg>';
+const BACK = '<svg viewBox="0 0 140 240" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#E2B95A"><rect x="7" y="7" width="126" height="226" rx="6" stroke-width=".8" opacity=".7"/><rect x="13" y="13" width="114" height="214" rx="4" stroke-width=".5" opacity=".4"/><circle cx="70" cy="120" r="46" stroke-width=".7" opacity=".55"/><circle cx="70" cy="120" r="34" stroke-width=".5" opacity=".4"/><path d="M70 66 V174 M16 120 H124" stroke-width=".4" opacity=".35"/><path d="M70 92 L74 116 L98 120 L74 124 L70 148 L66 124 L42 120 L66 116 Z" fill="#E2B95A" fill-opacity=".25" stroke-width=".8"/><path d="M78 38 A13 13 0 1 1 62 38 A10 10 0 1 0 78 38 Z" fill="#E2B95A" fill-opacity=".5" stroke="none"/><path d="M70 196 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 Z" fill="#E2B95A" stroke="none" opacity=".7"/></svg>';
+
+const POSITIONS = { day: ["Today"], three: ["Past", "Present", "Future"] };
+const $ = id => document.getElementById(id);
+const table = $("table"), readings = $("readings"), hint = $("hint"), drawBtn = $("draw"), revBox = $("rev");
+
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem("hpts-tarot-" + k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem("hpts-tarot-" + k, JSON.stringify(v)); } catch (e) {} }
+};
+const today = () => { const d = new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); };
+
+let mode = "day";
+let spread = null; // [{i, reversed, flipped}]
+
+function rand(n) {
+  if (window.crypto && crypto.getRandomValues) { const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] % n; }
+  return Math.floor(Math.random() * n);
+}
+function shuffledDeck() {
+  const idx = DECK.map(c => c.i);
+  for (let k = idx.length - 1; k > 0; k--) { const j = rand(k + 1); [idx[k], idx[j]] = [idx[j], idx[k]]; }
+  return idx;
+}
+
+function faceHTML(card, reversed) {
+  return '<div class="face' + (reversed ? " rev" : "") + '">' + FRAME +
+    '<div class="art"><div class="num">' + card.rank + '</div><div class="sym">' + ICONS[card.suit] + '</div><div class="nm">' + card.name + '</div></div></div>';
+}
+
+function renderTable() {
+  const labels = POSITIONS[mode];
+  table.className = "table " + (mode === "day" ? "single" : "three") + (spread ? "" : " empty");
+  table.innerHTML = labels.map((label, k) => {
+    const s = spread && spread[k];
+    const card = s ? DECK[s.i] : null;
+    const aria = s ? (s.flipped ? card.name + (s.reversed ? ", reversed" : "") : "Turn over the " + label.toLowerCase() + " card") : label + " card, not drawn yet";
+    return '<div class="slot"><div class="slot-label">' + label + '</div>' +
+      '<div class="card' + (s && s.flipped ? " flipped" : "") + '" data-k="' + k + '" role="button" tabindex="' + (s && !s.flipped ? 0 : -1) + '" aria-label="' + aria + '">' +
+      '<div class="inner"><div class="back">' + BACK + '</div>' + (card ? faceHTML(card, s.reversed) : "") + '</div></div></div>';
+  }).join("");
+  table.querySelectorAll(".card").forEach(el => {
+    el.addEventListener("click", () => flip(+el.dataset.k));
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(+el.dataset.k); } });
+  });
+  updateHint();
+}
+
+function readingHTML(s, label) {
+  const c = DECK[s.i];
+  const r = s.reversed;
+  const chips = ['<span class="chip">Element <b>' + c.element + '</b></span>'];
+  if (c.sign !== "N/A") chips.push('<span class="chip">Astrology <b>' + c.sign + '</b></span>');
+  chips.push('<span class="chip">Yes or No <b>' + c.yesno + '</b></span>');
+  return '<article class="reading">' +
+    '<div class="r-top">' + (mode === "three" ? '<span class="r-pos">' + label + '</span>' : "") +
+    '<h2 class="r-name">' + c.name + '</h2><span class="r-orient">' + (r ? "Reversed" : "Upright") + '</span></div>' +
+    '<p class="r-key">' + (r ? c.revKey : c.keyword) + '</p>' +
+    '<p class="r-desc">' + (r ? c.revDesc : c.upDesc) + '</p>' +
+    '<p class="r-words"><b>Upright</b> ' + c.up + '<br><b>Reversed</b> ' + c.rev + '</p>' +
+    '<div class="chips">' + chips.join("") + '</div></article>';
+}
+
+function renderReadings() {
+  if (!spread) { readings.innerHTML = ""; return; }
+  const labels = POSITIONS[mode];
+  readings.innerHTML = spread.map((s, k) => s.flipped ? readingHTML(s, labels[k]) : "").join("");
+}
+
+function updateHint() {
+  if (!spread) { hint.textContent = mode === "day" ? "Take a breath, think of your day, then shuffle." : "Hold a question in mind, then shuffle."; drawBtn.textContent = "Shuffle and draw"; return; }
+  const left = spread.filter(s => !s.flipped).length;
+  drawBtn.textContent = "Shuffle again";
+  if (left) hint.textContent = mode === "day" ? "Tap the card to turn it over." : (left === 3 ? "Tap each card to turn it over, starting with the past." : "Tap the next card.");
+  else hint.textContent = mode === "day" ? "Your card for today. It stays here until tomorrow." : "Your three cards, read left to right.";
+}
+
+function save() { store.set(mode, { date: today(), spread }); }
+
+function flip(k) {
+  if (!spread || spread[k].flipped) return;
+  spread[k].flipped = true;
+  const el = table.querySelector('.card[data-k="' + k + '"]');
+  const c = DECK[spread[k].i];
+  el.classList.add("flipped");
+  el.setAttribute("tabindex", "-1");
+  el.setAttribute("aria-label", c.name + (spread[k].reversed ? ", reversed" : ""));
+  renderReadings();
+  updateHint();
+  save();
+}
+
+function draw() {
+  const order = shuffledDeck();
+  const allowRev = revBox.checked;
+  spread = POSITIONS[mode].map((_, k) => ({ i: order[k], reversed: allowRev && rand(2) === 1, flipped: false }));
+  renderTable();
+  renderReadings();
+  table.classList.add("shuffling");
+  setTimeout(() => table.classList.remove("shuffling"), 650);
+  save();
+  const first = table.querySelector(".card");
+  if (first) first.focus({ preventScroll: true });
+}
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll(".modes button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+  const saved = store.get(m);
+  spread = saved && saved.date === today() ? saved.spread : null;
+  store.set("mode", m);
+  renderTable();
+  renderReadings();
+}
+
+document.querySelectorAll(".modes button").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
+drawBtn.addEventListener("click", draw);
+const savedRev = store.get("reversals");
+if (savedRev === false) revBox.checked = false;
+revBox.addEventListener("change", () => store.set("reversals", revBox.checked));
+setMode(store.get("mode") === "three" ? "three" : "day");
+
+// Star field
+(function () {
+  const cv = $("sky"), ctx = cv.getContext("2d");
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let stars = [], w, h, dpr;
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = cv.width = innerWidth * dpr; h = cv.height = innerHeight * dpr;
+    stars = Array.from({ length: Math.round(innerWidth * innerHeight / 5200) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, r: (Math.random() * 1.1 + .3) * dpr, p: Math.random() * 6.28, s: .4 + Math.random() * 1.2, gold: Math.random() < .18
+    }));
+  }
+  function frame(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (const s of stars) {
+      const a = still ? .7 : .35 + .55 * (0.5 + 0.5 * Math.sin(s.p + t / 1000 * s.s));
+      ctx.globalAlpha = a;
+      ctx.fillStyle = s.gold ? "#E2B95A" : "#F3EFE4";
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill();
+    }
+    if (!still) requestAnimationFrame(frame);
+  }
+  size(); addEventListener("resize", () => { size(); if (still) frame(0); });
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
