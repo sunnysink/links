@@ -91,25 +91,28 @@ button:focus-visible, input:focus-visible, .card:focus-visible { outline: 2px so
 .slot-label { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .single .slot { flex-basis: 250px; }
 
-.card { width: 100%; max-width: 100%; aspect-ratio: 7 / 12; perspective: 1200px; cursor: pointer; border-radius: 14px; }
+.card { width: 100%; max-width: 100%; aspect-ratio: 520 / 909; perspective: 1200px; cursor: pointer; border-radius: 6% / 3.4%; container-type: inline-size; }
 .card .inner { position: relative; width: 100%; height: 100%; transition: transform .9s cubic-bezier(.3, .7, .2, 1); transform-style: preserve-3d; }
 .card.flipped .inner { transform: rotateY(180deg); }
 .card.flipped { cursor: default; }
 .face, .back {
-  position: absolute; inset: 0; border-radius: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, .45), 0 0 0 1px rgba(240, 194, 101, .5);
+  position: absolute; inset: 0; border-radius: 6% / 3.4%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
   overflow: hidden;
 }
-.back { background: radial-gradient(circle at 50% 42%, var(--sea), var(--deep) 55%, var(--night)); }
-.back svg, .face svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+.back img { width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 .card:not(.flipped):hover .inner { transform: translateY(-6px); }
-.face { transform: rotateY(180deg); background: radial-gradient(ellipse at 50% 30%, var(--sea), var(--deep) 50%, var(--night)); display: flex; }
-.face .art { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12% 10% 9%; text-align: center; }
+.face { transform: rotateY(180deg); background: var(--night); }
+.face svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.face .art { position: absolute; inset: 0; }
 .face.rev .art { transform: rotate(180deg); }
-.face .num { font-family: var(--serif); color: var(--gold); font-size: clamp(14px, 2.4vw, 22px); letter-spacing: .12em; }
-.face .sym { width: 52%; aspect-ratio: 1; color: var(--gold); }
-.face .sym svg { width: 100%; height: 100%; display: block; }
-.face .nm { font-family: var(--serif); color: var(--cream); font-size: clamp(13px, 2.3vw, 20px); line-height: 1.15; font-weight: 400; text-wrap: balance; }
+.face .art > * { position: absolute; left: 14%; right: 14%; margin: 0; text-align: center; }
+.face .num { top: 12.4%; font-family: var(--sans); font-weight: 500; font-size: 6.2cqw; letter-spacing: .32em; padding-left: .32em; color: var(--honey); text-transform: uppercase; }
+.face .sym { top: 22.6%; left: 31%; right: 31%; aspect-ratio: 1; }
+.face .sym svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 4cqw rgba(240, 194, 101, .35)); }
+.face .nm { top: 57.5%; font-family: var(--serif); font-size: 10cqw; line-height: 1.04; color: var(--cream); text-wrap: balance; }
+.face .kw { top: 72.5%; font-family: var(--serif); font-style: italic; font-size: 7.4cqw; line-height: 1.1; color: var(--honey); text-shadow: 0 0 3cqw rgba(240, 194, 101, .45); }
+.face .meta { top: 80.5%; font-family: var(--sans); font-weight: 500; font-size: 4.1cqw; letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; color: var(--peri); text-wrap: balance; }
 .empty .card { cursor: default; opacity: .35; }
 
 .actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -189,6 +192,7 @@ footer a:hover { color: var(--cream); }
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DE95"/><stop offset=".5" stop-color="#F0C265"/><stop offset="1" stop-color="#B07A35"/></linearGradient></defs></svg>
 <main class="wrap">
   <header>
     <div class="eyebrow">Free from High Priestess Tarot School</div>
@@ -327,15 +331,15 @@ const DECK = DATA.split("\n").map((line, i) => {
 });
 
 const ICONS = {
-  major: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="50" cy="50" r="44" opacity=".45"/><circle cx="50" cy="50" r="33" opacity=".3"/><path d="M50 10 L56 44 L90 50 L56 56 L50 90 L44 56 L10 50 L44 44 Z" fill="currentColor" fill-opacity=".18"/><circle cx="50" cy="50" r="3" fill="currentColor"/></svg>',
-  wands: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M38 90 L62 12"/><path d="M57 28 C66 22 72 24 74 30 C66 34 61 33 57 28 Z" fill="currentColor" fill-opacity=".25"/><path d="M50 52 C41 47 35 50 34 56 C42 59 47 57 50 52 Z" fill="currentColor" fill-opacity=".25"/><path d="M44 70 C52 66 58 68 59 74 C52 77 47 75 44 70 Z" fill="currentColor" fill-opacity=".25"/><circle cx="62" cy="12" r="3" fill="currentColor"/></svg>',
-  cups: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M26 18 H74 C74 44 64 56 50 56 C36 56 26 44 26 18 Z" fill="currentColor" fill-opacity=".18"/><path d="M50 56 V78"/><path d="M34 86 C38 79 62 79 66 86 Z" fill="currentColor" fill-opacity=".25"/><path d="M34 27 C40 31 60 31 66 27" opacity=".6"/></svg>',
-  swords: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M50 8 L56 22 V66 H44 V22 Z" fill="currentColor" fill-opacity=".18"/><path d="M30 66 H70"/><path d="M50 66 V84"/><circle cx="50" cy="89" r="4" fill="currentColor" fill-opacity=".4"/><path d="M50 26 V60" opacity=".5"/></svg>',
-  pentacles: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity=".1"/><circle cx="50" cy="50" r="34" opacity=".5"/><path d="M50 18 L69 76 L20 40 H80 L31 76 Z"/></svg>'
+  major: '<svg viewBox="0 0 100 100"><path fill="url(#hg)" d="M57 10A41 41 0 1 0 90 74A33 33 0 1 1 57 10Z"/><path fill="#F5EFE4" d="M64 30L67 45L82 48L67 51L64 66L61 51L46 48L61 45Z"/><circle cx="64" cy="48" r="13" fill="none" stroke="#F0C265" stroke-width="1"/></svg>',
+  wands: '<svg viewBox="0 0 100 100"><path fill="url(#hg)" d="M35 93L41 95L65 16L59 14Z"/><path fill="#F5EFE4" d="M62 3L67 12L62 21L57 12Z"/><path fill="url(#hg)" d="M58 33C67 25 76 27 78 34C70 39 63 38 58 33Z"/><path fill="url(#hg)" d="M50 58C40 52 32 55 31 62C40 66 46 64 50 58Z"/><path fill="url(#hg)" d="M45 76C54 71 61 73 62 79C55 83 49 81 45 76Z"/></svg>',
+  cups: '<svg viewBox="0 0 100 100"><path fill="url(#hg)" d="M22 14H78C78 46 65 59 50 59C35 59 22 46 22 14Z"/><path fill="none" stroke="#0D2342" stroke-width="2.4" d="M27 24C38 29 62 29 73 24"/><path fill="url(#hg)" d="M46 58H54V77H46Z"/><path fill="url(#hg)" d="M28 90C31 79 69 79 72 90Z"/><path fill="#F5EFE4" d="M50 32L52 39L59 41L52 43L50 50L48 43L41 41L48 39Z"/></svg>',
+  swords: '<svg viewBox="0 0 100 100"><path fill="url(#hg)" d="M50 4L58 18V65H42V18Z"/><path fill="none" stroke="#0D2342" stroke-width="2" d="M50 20V61"/><path fill="url(#hg)" d="M24 64Q50 70 76 64L76 71Q50 77 24 71Z"/><path fill="url(#hg)" d="M46 73H54V88H46Z"/><circle cx="50" cy="92.5" r="5.5" fill="#F5EFE4"/></svg>',
+  pentacles: '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="url(#hg)"/><circle cx="50" cy="50" r="35" fill="#0D2342"/><path fill="none" stroke="#F0C265" stroke-width="3.2" stroke-linejoin="round" d="M50 18L68.8 75.9L19.6 40.1H80.4L31.2 75.9Z"/><circle cx="50" cy="50" r="4" fill="#F5EFE4"/></svg>'
 };
 
-const FRAME = '<svg class="frame" viewBox="0 0 140 240" preserveAspectRatio="none" fill="none" stroke="#F0C265" stroke-width=".8"><rect x="7" y="7" width="126" height="226" rx="6" opacity=".7"/><path d="M18 226 V70 A52 52 0 0 1 122 70 V226 Z" opacity=".4"/></svg>';
-const BACK = '<svg viewBox="0 0 140 240" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#F0C265"><rect x="7" y="7" width="126" height="226" rx="6" stroke-width=".8" opacity=".7"/><rect x="13" y="13" width="114" height="214" rx="4" stroke-width=".5" opacity=".4"/><circle cx="70" cy="120" r="46" stroke-width=".7" opacity=".55"/><circle cx="70" cy="120" r="34" stroke-width=".5" opacity=".4"/><path d="M70 66 V174 M16 120 H124" stroke-width=".4" opacity=".35"/><path d="M70 92 L74 116 L98 120 L74 124 L70 148 L66 124 L42 120 L66 116 Z" fill="#F0C265" fill-opacity=".25" stroke-width=".8"/><path d="M78 38 A13 13 0 1 1 62 38 A10 10 0 1 0 78 38 Z" fill="#F0C265" fill-opacity=".5" stroke="none"/><path d="M70 196 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 Z" fill="#F0C265" stroke="none" opacity=".7"/></svg>';
+const FRAME = '<svg class="frame" viewBox="0 0 520 909" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5D98C"/><stop offset=".35" stop-color="#C58F46"/><stop offset=".6" stop-color="#F0C265"/><stop offset="1" stop-color="#9A6A2C"/></linearGradient><radialGradient id="win" cx=".5" cy=".36" r=".75"><stop offset="0" stop-color="#2B5C8A"/><stop offset=".45" stop-color="#0D2342"/><stop offset="1" stop-color="#06182F"/></radialGradient></defs><rect width="520" height="909" fill="#0A1E3A"/><rect x="4.5" y="4.5" width="511" height="900" rx="28" fill="none" stroke="url(#rim)" stroke-width="9"/><rect x="28" y="28" width="464" height="853" rx="3" fill="none" stroke="#F0C265" stroke-opacity=".6" stroke-width="2"/><g fill="none" stroke="#F0C265" stroke-opacity=".7" stroke-width="2"><path d="M72 28A44 44 0 0 1 28 72"/><path d="M448 28A44 44 0 0 0 492 72"/><path d="M72 881A44 44 0 0 0 28 837"/><path d="M448 881A44 44 0 0 1 492 837"/></g><rect x="62" y="86" width="396" height="737" rx="122" fill="url(#win)" stroke="#F0C265" stroke-width="3"/><rect x="73" y="97" width="374" height="715" rx="112" fill="none" stroke="#F0C265" stroke-opacity=".3" stroke-width="1.5"/><g fill="none" stroke="#F0C265" stroke-linecap="round" stroke-width="3.2" stroke-dasharray="0 13" opacity=".6"><circle cx="260" cy="317" r="132"/><path d="M260 100V170"/><path d="M260 466V500"/></g><g fill="#F5EFE4"><circle cx="234" cy="681" r="1.2" opacity="0.87"/><circle cx="304" cy="512" r="1.2" opacity="0.67"/><circle cx="225" cy="784" r="1.2" opacity="0.66"/><circle cx="274" cy="504" r="1.6" opacity="0.41"/><circle cx="123" cy="601" r="1.2" opacity="0.69"/><circle cx="206" cy="754" r="2.8" opacity="0.37"/><circle cx="317" cy="638" r="2.2" opacity="0.54"/><circle cx="287" cy="580" r="2.8" opacity="0.51"/><circle cx="221" cy="571" r="1.2" opacity="0.87"/><circle cx="211" cy="532" r="2.8" opacity="0.38"/><circle cx="243" cy="489" r="1.6" opacity="0.80"/><circle cx="391" cy="771" r="1.6" opacity="0.40"/><circle cx="141" cy="564" r="1.2" opacity="0.62"/><circle cx="91" cy="399" r="2.2" opacity="0.69"/><circle cx="382" cy="766" r="1.2" opacity="0.60"/><circle cx="386" cy="767" r="2.8" opacity="0.57"/></g><path fill="#F0C265" d="M44 32L46.4 41.6L56 44L46.4 46.4L44 56L41.6 46.4L32 44L41.6 41.6ZM476 32L478.4 41.6L488 44L478.4 46.4L476 56L473.6 46.4L464 44L473.6 41.6ZM44 853L46.4 862.6L56 865L46.4 867.4L44 877L41.6 867.4L32 865L41.6 862.6ZM476 853L478.4 862.6L488 865L478.4 867.4L476 877L473.6 867.4L464 865L473.6 862.6ZM260 8L264.0 24.0L280 28L264.0 32.0L260 48L256.0 32.0L240 28L256.0 24.0ZM260 861L264.0 877.0L280 881L264.0 885.0L260 901L256.0 885.0L240 881L256.0 877.0ZM28 443L30.2 451.8L39 454L30.2 456.2L28 465L25.8 456.2L17 454L25.8 451.8ZM492 443L494.2 451.8L503 454L494.2 456.2L492 465L489.8 456.2L481 454L489.8 451.8ZM118 163L119.4 168.6L125 170L119.4 171.4L118 177L116.6 171.4L111 170L116.6 168.6ZM402 632L403.6 638.4L410 640L403.6 641.6L402 648L400.4 641.6L394 640L400.4 638.4ZM398 185L399.0 189.0L403 190L399.0 191.0L398 195L397.0 191.0L393 190L397.0 189.0ZM126 694L127.2 698.8L132 700L127.2 701.2L126 706L124.8 701.2L120 700L124.8 698.8Z"/></svg>';
+const BACK = '<img src="back.webp" alt="" draggable="false">';
 
 const POSITIONS = { day: ["Today"], three: ["Past", "Present", "Future"] };
 const $ = id => document.getElementById(id);
@@ -361,8 +365,10 @@ function shuffledDeck() {
 }
 
 function faceHTML(card, reversed) {
+  const meta = card.sign === "N/A" ? card.element : card.element + " \u00B7 " + card.sign;
   return '<div class="face' + (reversed ? " rev" : "") + '">' + FRAME +
-    '<div class="art"><div class="num">' + card.rank + '</div><div class="sym">' + ICONS[card.suit] + '</div><div class="nm">' + card.name + '</div></div></div>';
+    '<div class="art"><p class="num">' + card.rank + '</p><div class="sym">' + ICONS[card.suit] + '</div>' +
+    '<p class="nm">' + card.name + '</p><p class="kw">' + (reversed ? card.revKey : card.keyword) + '</p><p class="meta">' + meta + '</p></div></div>';
 }
 
 function renderTable() {
