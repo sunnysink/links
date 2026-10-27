@@ -23,6 +23,8 @@ p{margin:0 auto 14px}
 .step{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:26px 22px;margin:24px 0}
 .btn{display:inline-block;background:var(--gold);color:var(--deep);font:600 14px/1 'Josefin Sans',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:17px 26px;border-radius:6px;text-decoration:none;margin-top:8px}
 .btn:hover{background:#d8b47a}
+.cal{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px}
+.small{font-size:14px;margin-top:14px;color:var(--bronze)}
 .btn.quiet{background:transparent;border:1.5px solid var(--gold);color:var(--wine)}
 footer{font:600 11px/1.6 'Josefin Sans',system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);padding-bottom:36px}
 </style>
@@ -48,7 +50,12 @@ footer{font:600 11px/1.6 'Josefin Sans',system-ui,sans-serif;letter-spacing:.24e
   <div class="step">
     <h2>Add the lives to your calendar</h2>
     <p>Thursday, Friday and Saturday, November 19 to 21, at 1pm Pacific.</p>
-    <a class="btn quiet" href="../shadow-priestess-path.ics" download>Add to calendar</a>
+    <div class="cal">
+      <a class="btn quiet" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Shadow+Priestess+Path+%C2%B7+Free+live+challenge&amp;dates=20261119T210000Z%2F20261119T220000Z&amp;details=Free+3-day+live+challenge+with+Sunny%2C+1pm+Pacific+each+day.+Join+the+group%3A+https%3A%2F%2Fwww.facebook.com%2Fgroups%2Fshadowpriestesspath&amp;recur=RRULE%3AFREQ%3DDAILY%3BCOUNT%3D3" target="_blank" rel="noopener">Google Calendar</a>
+      <a class="btn quiet" href="../shadow-priestess-path.ics">Apple Calendar</a>
+      <a class="btn quiet" href="../shadow-priestess-path.ics">Outlook</a>
+    </div>
+    <p class="small">Google opens with all three lives filled in, so just tap Save. Apple and Outlook open the file in your calendar app, where you tap Add.</p>
   </div>
 </div>
 <footer>High Priestess Tarot School · Sunny Sink</footer>
