@@ -1,0 +1,48 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//High Priestess Tarot School//Shadow Priestess Path//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:spp-20261119@links.sunnysink.com
+DTSTAMP:20261027T000000Z
+DTSTART:20261119T210000Z
+DTEND:20261119T220000Z
+SUMMARY:Shadow Priestess Path · Day 1: What a shadow card is
+DESCRIPTION:Free live challenge with Sunny. Join the group: https://www.facebook.com/groups/shadowpriestesspath
+URL:https://www.facebook.com/groups/shadowpriestesspath
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Shadow Priestess Path starts in 30 minutes
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spp-20261120@links.sunnysink.com
+DTSTAMP:20261027T000000Z
+DTSTART:20261120T210000Z
+DTEND:20261120T220000Z
+SUMMARY:Shadow Priestess Path · Day 2: Three ways to read a reversal
+DESCRIPTION:Free live challenge with Sunny. Join the group: https://www.facebook.com/groups/shadowpriestesspath
+URL:https://www.facebook.com/groups/shadowpriestesspath
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Shadow Priestess Path starts in 30 minutes
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spp-20261121@links.sunnysink.com
+DTSTAMP:20261027T000000Z
+DTSTART:20261121T210000Z
+DTEND:20261121T220000Z
+SUMMARY:Shadow Priestess Path · Day 3: Reading reversals for real
+DESCRIPTION:Free live challenge with Sunny. Join the group: https://www.facebook.com/groups/shadowpriestesspath
+URL:https://www.facebook.com/groups/shadowpriestesspath
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Shadow Priestess Path starts in 30 minutes
+END:VALARM
+END:VEVENT
+END:VCALENDAR
