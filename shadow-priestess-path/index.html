@@ -64,6 +64,9 @@ form.signup input[type=email]{flex:1 1 230px;min-width:0;padding:14px 16px;borde
 .hero,.daysband{background:var(--mauve)}
 .hero .kicker,.daysband .kicker,.daysband .label{color:var(--deep)}
 .hero p.sub,.daysband p,.daysband li{color:var(--deep)}
+.hero .rule,.daysband .rule{background:var(--wine)}
+.daysband .goodies,.daysband .goodies li{border-color:rgba(46,15,24,.35)}
+.daysband .goodies li::before{color:var(--wine)}
 .hero{padding:36px 0 60px;text-align:center}
 .hero .rule{margin:18px auto}
 .hero p.sub{max-width:640px;margin:16px auto 28px;font-size:19px}
@@ -95,6 +98,7 @@ form.signup input[type=email]{flex:1 1 230px;min-width:0;padding:14px 16px;borde
 /* about */
 .about{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center}
 .about .mock{aspect-ratio:3/4}
+.about .photo{width:100%;height:auto;border-radius:12px}
 .about p{margin-top:12px}
 
 /* quote */
@@ -133,6 +137,7 @@ footer{padding:28px 0 40px;text-align:center;font:600 11px/1.6 var(--label);lett
   .day,.about{grid-template-columns:1fr;gap:20px}
   .day:nth-child(even) .mock{order:0}
   .about .mock{max-width:240px;margin:0 auto}
+  .about .photo{max-width:240px;margin:0 auto}
   .count div{min-width:64px}
 }
 </style>
@@ -219,7 +224,7 @@ footer{padding:28px 0 40px;text-align:center;font:600 11px/1.6 var(--label);lett
 
 <section style="background:var(--cream)">
   <div class="wrap about">
-    <div class="mock">Photo of Sunny goes here</div>
+    <img class="photo" src="sunny.webp" width="640" height="800" loading="lazy" alt="Sunny Sink, founder of High Priestess Tarot School">
     <div>
       <h2>Hi, I'm Sunny!</h2>
       <p>I'm the founder of High Priestess Tarot School, where I teach tarot readers to trust their intuition and read with confidence.</p>
