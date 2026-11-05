@@ -26,7 +26,7 @@
 /* Shadow Priestess Path launch look: ivory pages, wine and plum, gold hairlines (brand board 2026-09) */
 :root{
   --ivory:#fbf7f0; --cream:#f3e6cc; --wine:#5a2530; --plum:#5e3341; --deep:#2e0f18;
-  --gold:#c9a063; --bronze:#9a6b33; --ink:#3a2229; --line:rgba(201,160,99,.55);
+  --gold:#c9a063; --bronze:#9a6b33; --ink:#3a2229; --mauve:#aa9c9d; --line:rgba(201,160,99,.55);
   --display:'Playfair Display',Georgia,serif; --body:'Lora',Georgia,serif; --label:'Josefin Sans',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -61,6 +61,9 @@ form.signup input[type=email]{flex:1 1 230px;min-width:0;padding:14px 16px;borde
 .bar .msg{text-align:right}
 
 /* hero */
+.hero,.daysband{background:var(--mauve)}
+.hero .kicker,.daysband .kicker,.daysband .label{color:var(--deep)}
+.hero p.sub,.daysband p,.daysband li{color:var(--deep)}
 .hero{padding:36px 0 60px;text-align:center}
 .hero .rule{margin:18px auto}
 .hero p.sub{max-width:640px;margin:16px auto 28px;font-size:19px}
@@ -166,7 +169,7 @@ footer{padding:28px 0 40px;text-align:center;font:600 11px/1.6 var(--label);lett
   </div>
 </section>
 
-<section>
+<section class="daysband">
   <div class="wrap">
     <div class="center"><div class="kicker">The three days</div><div class="rule"></div></div>
     <div class="days">
