@@ -46,7 +46,9 @@ a{color:inherit}
 .copybar{position:fixed;right:18px;bottom:18px;z-index:50}
 .copybar button{font:600 14px Jost;background:var(--night);color:var(--frost);border:1px solid var(--silver2);padding:12px 18px;border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 
-/* moon garland */
+/* snowflake garland */
+.flake{font-style:normal;font-size:22px;line-height:22px;color:#e9eff6;position:relative;background:var(--night);padding:0 6px;text-shadow:0 0 12px rgba(233,239,246,.6)}
+.flake.sm{font-size:16px}.flake.lg{font-size:30px;color:var(--glow)}
 .garland{display:flex;justify-content:center;gap:clamp(10px,2.4vw,28px);padding:14px 0;position:relative}
 .garland::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid rgba(195,204,216,.45)}
 .moon{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#c3ccd8 60%,#8e9bb0);position:relative;box-shadow:0 0 12px rgba(233,239,246,.5)}
@@ -101,7 +103,9 @@ section{padding:86px 0}
 
 .change{background:var(--navy);color:var(--frost)}
 .change h2{color:var(--snow)}
-.change .cols{display:grid;grid-template-columns:1fr;gap:18px;max-width:760px}
+.change .cols{display:grid;grid-template-columns:minmax(0,.8fr) 1.2fr;gap:56px;align-items:center}
+.change .art{display:flex;align-items:center;justify-content:center}
+.change .art svg{width:min(100%,340px);height:auto;filter:drop-shadow(0 0 30px rgba(233,239,246,.25))}
 .change ul{list-style:none;padding:0;margin:0}
 .change li{padding:18px 0 18px 46px;border-bottom:1px solid rgba(195,204,216,.2);position:relative;font-size:18px}
 .change li::before{content:"✦";position:absolute;left:8px;top:16px;color:var(--glow);font-size:20px}
@@ -207,6 +211,7 @@ footer{background:#050c19;color:var(--silver2);font-size:13px;text-align:center;
 footer a{color:var(--silver)}
 
 @media (max-width:900px){
+  .change .art{display:none}
   .hero .inner,.change .cols,.about .cols,.colbuy{grid-template-columns:1fr}
   .says .quotes{columns:2}
   .voices .grid{grid-template-columns:1fr}.note{grid-column:auto!important;margin-top:0!important}
@@ -240,7 +245,7 @@ footer a{color:var(--silver)}
     </div>
     <!-- membership mockups go here (Sunny sends three) -->
   </div>
-  <div class="garland wrap" aria-hidden="true"><i class="moon c1"></i><i class="moon c2"></i><i class="moon"></i><i class="moon c3"></i><i class="moon c4"></i></div>
+  <div class="garland wrap" aria-hidden="true"><i class="flake sm">❄</i><i class="flake">❄</i><i class="flake lg">❄</i><i class="flake">❄</i><i class="flake sm">❄</i></div>
 </header>
 
 <!-- 2 WHERE THEY ARE -->
@@ -260,6 +265,9 @@ footer a{color:var(--silver)}
 <!-- 3 WHAT CHANGES -->
 <section class="change">
   <div class="wrap cols">
+    <div class="art" aria-hidden="true"><!-- swap for Sunny's winter wonderland image -->
+      <svg viewBox="-100 -100 200 200"><g stroke="#e9eff6" stroke-width="5" stroke-linecap="round" fill="none"><g id="arm"><path d="M0 0V-88"/><path d="M0-30l-18-16M0-30l18-16M0-58l-14-14M0-58l14-14"/></g><use href="#arm" transform="rotate(60)"/><use href="#arm" transform="rotate(120)"/><use href="#arm" transform="rotate(180)"/><use href="#arm" transform="rotate(240)"/><use href="#arm" transform="rotate(300)"/></g><circle r="10" fill="#f3c77e"/></svg>
+    </div>
     <div>
       <h2>What changes in 2027</h2>
       <p style="color:var(--silver)">A yearly membership gives your tarot study a home all year, at a sale price that stays yours every year you stay, so the plan you make in January is still going strong in June.</p>
@@ -271,6 +279,7 @@ footer a{color:var(--silver)}
       <li>You know your next step, whether that's certification or going deeper into intuition and magic.</li>
       <li>Your price for the year's learning is set before the holidays are over, and it stays that price every year you renew.</li>
     </ul>
+    </div>
   </div>
 </section>
 
@@ -312,11 +321,12 @@ footer a{color:var(--silver)}
     </div>
 
     <div class="row">
-      <div class="label">Magic and Intuition Mastery Yearly Membership<span class="bp">Learn how to trust your intuition and step into your magic.</span></div>
+      <div class="label">Magic and Intuition Mastery Year Pass<span class="bp">Learn how to trust your intuition and step into your magic.</span></div>
       <div><h4>What you get</h4><ul>
-        <li>A full year of Magic and Intuition Mastery, Tarot Mastery Circle and High Priestess Tarot School, renewing yearly</li>
+        <li>A full year of Magic and Intuition Mastery, Tarot Mastery Circle and High Priestess Tarot School</li>
         <li>Lifetime access to the MIM core content</li>
         <li>Your $99 certification fee, covered</li>
+        <li>After your year, stay on as an alumni member at a lower monthly rate and keep HPTS, TMC, everything new in MIM, and your bonuses, including Hecate's Path</li>
       </ul></div>
     </div>
 
@@ -330,12 +340,12 @@ footer a{color:var(--silver)}
     <p class="lead">Six courses that are yours for life. Each one arrives in your inbox as its own PDF with links to everything inside, so you can keep them, come back to them and work through them at your own pace.</p>
     <p class="lead"><b>All six courses are also inside High Priestess Tarot School.</b> The HPTS Yearly Membership gives you every one of them all year, along with the 33-lesson core course, the Tarot Reflections Journal, Q&amp;A by video and the community, for $59.</p>
     <div class="courses">
-      <div><b>Magic of Tarot &amp; Astrology</b><i>Integrate tarot and astrology</i><ul><li>Tarot foundations refresher video</li><li>Astrology foundations refresher video</li><li>12 zodiac sign videos, one for each season</li><li>20 seasonal spreads, 5 for each season</li><li>Yearly Astrology Guide</li><li>The Magic of Tarot &amp; Astrology Guide</li><li>Interactive astrology tool</li></ul></div>
-      <div><b>The Esoteric Key</b><i>Tarot symbolism for intuitive readers</i><ul><li>6 video lessons on symbols, colors, animals, elements, numerology and the major arcana</li><li>Tarot Symbolism Guide and Journal</li><li>Build Your Own Tarot Symbolism Guide (Canva templates)</li><li>26-page Expanded Tarot Symbolism Glossary</li><li>History of Tarot PDF</li><li>Printable symbolism flashcards</li></ul></div>
-      <div><b>Enlightened Priestess Path</b><i>Master intuition and embrace your magical essence</i><ul><li>3 video lessons on intuition</li><li>Intuition Discovery Journal</li><li>Energetic Empowerment Toolkit</li><li>Intuition Toolkit</li><li>Unlock Your Future Self visualization</li><li>Personal Magic Action Plan</li><li>25 Radiant Magic Affirmation Cards</li></ul></div>
-      <div><b>Prosperous Priestess Path</b><i>Unlock the magic of tarotpreneurship</i><ul><li>3 video lessons on starting your tarot business</li><li>Business Vision Workbook</li><li>Unlocking Your Tarot Business Audience workbook</li><li>Social media content calendar</li><li>Social media post templates</li><li>7 brand board templates, each with a matching Canva website, logo and graphics</li></ul></div>
-      <div><b>Majestic Priestess Path</b><i>Master the court cards</i><ul><li>3 video lessons on the 16 court cards</li><li>Royals Guide to Court Cards</li><li>Court card flashcards</li><li>Squire&rsquo;s Companion for the pages and knights</li><li>Sovereign&rsquo;s Guidebook for the queens and kings</li><li>Scenario Cards game</li><li>Coloring pages for all 16 court cards</li></ul></div>
-      <div><b>Shadow Priestess Path</b><i>Master tarot reversals</i><ul><li>3 video lessons on reading reversed cards</li><li>Shadow Priestess Path Tarot Deck, all 78 printable cards</li><li>Reversal Reading Methods Guide</li><li>Tarot Reversals Cheat Sheet</li><li>Reversals Readiness Checklist</li><li>Reversal Intention Journal Page</li><li>Empowering Language Phrase Bank</li><li>Shadow Buddy Workbook</li></ul></div>
+      <div><b>Magic of Tarot &amp; Astrology</b><i>Integrate Tarot and Astrology</i><ul><li>Tarot foundations refresher video</li><li>Astrology foundations refresher video</li><li>12 zodiac sign videos, one for each season</li><li>20 seasonal spreads, 5 for each season</li><li>Yearly Astrology Guide</li><li>The Magic of Tarot &amp; Astrology Guide</li><li>Interactive astrology tool</li></ul></div>
+      <div><b>The Esoteric Key</b><i>Tarot Symbolism for Intuitive Readers</i><ul><li>6 video lessons on symbols, colors, animals, elements, numerology and the major arcana</li><li>Tarot Symbolism Guide and Journal</li><li>Build Your Own Tarot Symbolism Guide (Canva templates)</li><li>26-page Expanded Tarot Symbolism Glossary</li><li>History of Tarot PDF</li><li>Printable symbolism flashcards</li></ul></div>
+      <div><b>Enlightened Priestess Path</b><i>Master Intuition and Embrace Your Magical Essence</i><ul><li>3 video lessons on intuition</li><li>Intuition Discovery Journal</li><li>Energetic Empowerment Toolkit</li><li>Intuition Toolkit</li><li>Unlock Your Future Self visualization</li><li>Personal Magic Action Plan</li><li>25 Radiant Magic Affirmation Cards</li></ul></div>
+      <div><b>Prosperous Priestess Path</b><i>Unlock the Magic of Tarotpreneurship</i><ul><li>3 video lessons on starting your tarot business</li><li>Business Vision Workbook</li><li>Unlocking Your Tarot Business Audience workbook</li><li>Social media content calendar</li><li>Social media post templates</li><li>7 brand board templates, each with a matching Canva website, logo and graphics</li></ul></div>
+      <div><b>Majestic Priestess Path</b><i>Master the Court Cards</i><ul><li>3 video lessons on the 16 court cards</li><li>Royals Guide to Court Cards</li><li>Court card flashcards</li><li>Squire&rsquo;s Companion for the pages and knights</li><li>Sovereign&rsquo;s Guidebook for the queens and kings</li><li>Scenario Cards game</li><li>Coloring pages for all 16 court cards</li></ul></div>
+      <div><b>Shadow Priestess Path</b><i>Master Tarot Reversals</i><ul><li>3 video lessons on reading reversed cards</li><li>Shadow Priestess Path Tarot Deck, all 78 printable cards</li><li>Reversal Reading Methods Guide</li><li>Tarot Reversals Cheat Sheet</li><li>Reversals Readiness Checklist</li><li>Reversal Intention Journal Page</li><li>Empowering Language Phrase Bank</li><li>Shadow Buddy Workbook</li></ul></div>
     </div>
     <a class="btn center" href="#collection-price">Get lifetime access for $37</a>
   </div>
@@ -376,7 +386,7 @@ footer a{color:var(--silver)}
     <div class="list">
       <p><b>You're new to tarot</b> or you've been dabbling for a while, and you want to feel like a real reader by the end of 2027. Choose the HPTS Yearly Membership.</p>
       <p><b>You already read for yourself</b> and you want practice, feedback and a certification in 2027. Choose the TMC Yearly Membership.</p>
-      <p><b>You want everything</b>: the school, the circle, and the deepest work on intuition and magic. Choose the MIM Yearly Membership.</p>
+      <p><b>You want everything</b>: the school, the circle, and the deepest work on intuition and magic. Choose the MIM Year Pass.</p>
       <p><b>You love owning your courses</b> and want lifetime access to work through them in your own time. Choose The Priestess Path Collection.</p>
       <p><b>You're already a monthly member</b> and you'd like to pay yearly at the sale price. Any yearly membership works for you too.</p>
       <p><b>You're shopping for a tarot lover</b> in your life. The Priestess Path Collection makes a gift they keep for life.</p>
@@ -388,7 +398,7 @@ footer a{color:var(--silver)}
 <section class="price" id="price">
   <div class="wrap">
     <h2>Choose your year.</h2>
-    <p class="intro">Each yearly membership renews at the sale price you join at, every year you stay. Cancel anytime. The sale price is open through Monday, November 30.</p>
+    <p class="intro">HPTS and TMC renew at the sale price you join at, every year you stay, and you can cancel anytime. The MIM Year Pass is one payment for 12 months. The sale prices are open through Monday, November 30.</p>
     <div class="options">
       <div class="opt hpts">
         <span class="who">Start here</span>
@@ -423,7 +433,7 @@ footer a{color:var(--silver)}
       </div>
       <div class="opt mim">
         <span class="who">Everything</span>
-        <h3>MIM Yearly Membership</h3>
+        <h3>MIM Year Pass</h3>
         <p class="bp">Learn how to trust your intuition and step into your magic.</p>
         <ul>
           <li>A full year of MIM, TMC and HPTS</li>
@@ -431,8 +441,8 @@ footer a{color:var(--silver)}
           <li>$99 certification fee covered</li>
         </ul>
         <div class="amt">$444</div>
-        <div class="after">Billed yearly, renews at $444. Regularly $555 for the year, or $708 at $59 a month. You save $111 every year. Cancel anytime.</div>
-        <a class="btn" href="#fill-in-stripe-link-mim">Get the MIM Yearly Membership</a>
+        <div class="after">One payment for 12 months. Regularly $555 for the year, or $708 at $59 a month. You save $111. The MIM core content is yours for life, and after your year you can stay on as an alumni member at a lower monthly rate.</div>
+        <a class="btn" href="#fill-in-stripe-link-mim">Get the MIM Year Pass</a>
       </div>
     </div>
 
@@ -468,7 +478,7 @@ footer a{color:var(--silver)}
       <div class="day"><div class="n">Sunday</div><div class="d">Nov 29</div><p>Open.</p></div>
       <div class="day"><div class="n">Monday</div><div class="d">Nov 30</div><p>Cyber Monday. Last day to buy, until 11:59pm Pacific.</p></div>
     </div>
-    <p><b>Why it ends Monday night:</b> Cyber Monday closes the holiday shopping weekend. On December 1 the yearly memberships go back to their regular prices for new members, and The Priestess Path Collection closes.</p>
+    <p><b>Why it ends Monday night:</b> Cyber Monday closes the holiday shopping weekend. On December 1 the memberships and the MIM Year Pass go back to their regular prices for new members, and The Priestess Path Collection closes.</p>
   </div>
 </section>
 
@@ -476,12 +486,12 @@ footer a{color:var(--silver)}
 <section class="faq">
   <div class="wrap">
     <h2>Before you choose.</h2>
-    <details><summary>Does my yearly membership renew on its own?</summary><p>Yes. It renews each year at the sale price you joined at, so your price stays the same every year you stay. Cancel anytime before your renewal date by emailing support@sunnysink.com.</p></details>
-    <details><summary>When does my year start?</summary><p>The day you join. Your membership renews on that date each year.</p></details>
+    <details><summary>Does my membership renew on its own?</summary><p>HPTS and TMC do. They renew each year at the sale price you joined at, so your price stays the same every year you stay. Cancel anytime before your renewal date by emailing support@sunnysink.com. The MIM Year Pass is one payment for 12 months. The MIM core content is yours for life, and after your year you can stay on as an alumni member at a lower monthly rate to keep HPTS, TMC, everything new in MIM and your bonuses, including Hecate's Path.</p></details>
+    <details><summary>When does my year start?</summary><p>The day you join. HPTS and TMC renew on that date each year, and the MIM Year Pass runs 12 months from that date.</p></details>
     <details><summary>I'm already a monthly member. Can I switch to a yearly membership?</summary><p>Yes. Join the yearly membership, then email support@sunnysink.com, and we'll stop your monthly billing so you're never charged twice.</p></details>
     <details><summary>Do I need to know any tarot already?</summary><p>No. High Priestess Tarot School starts at the very beginning. If you already read, the TMC and MIM passes meet you where you are.</p></details>
     <details><summary>What's the difference between the HPTS Yearly Membership and The Priestess Path Collection?</summary><p>The HPTS Yearly Membership gives you a year in the school: the core course, five bonus trainings, the journal, video Q&amp;A and the community. The Priestess Path Collection gives you lifetime access to six courses, including Shadow Priestess Path, delivered to your inbox as PDFs with links to everything inside.</p></details>
-    <details><summary>Is certification included?</summary><p>The TMC Yearly Membership includes the path to certification, and the $99 certification fee is paid separately if you choose to certify. The MIM Yearly Membership covers the $99 fee.</p></details>
+    <details><summary>Is certification included?</summary><p>The TMC Yearly Membership includes the path to certification, and the $99 certification fee is paid separately if you choose to certify. The MIM Year Pass covers the $99 fee.</p></details>
     <details><summary>Can I give one as a gift?</summary><p>The Priestess Path Collection is the gift: one payment and lifetime access. Buy it, then email support@sunnysink.com with your person's name and email address, and we'll send it to them in time for the holidays.</p></details>
     <details><summary>What if I have a question about refunds?</summary><p>My full terms, including refunds, are at sunnysink.com/terms-conditions. You can also email support@sunnysink.com before you buy.</p></details>
   </div>
@@ -491,7 +501,7 @@ footer a{color:var(--silver)}
 <section class="how">
   <div class="wrap">
     <h2>How to buy, and what happens next.</h2>
-    <h3 style="margin-top:28px">If you choose a yearly membership</h3>
+    <h3 style="margin-top:28px">If you choose HPTS, TMC or MIM</h3>
     <div class="steps">
       <div class="step"><b>Choose your pass</b>Tap the button for HPTS, TMC or MIM.</div>
       <div class="step"><b>Pay with Stripe</b>Checkout is secure and takes about a minute.</div>
@@ -512,9 +522,9 @@ footer a{color:var(--silver)}
 <section class="final">
   <div class="bg"></div>
   <div class="wrap inner">
-    <div class="garland" aria-hidden="true"><i class="moon c1"></i><i class="moon c2"></i><i class="moon"></i><i class="moon c3"></i><i class="moon c4"></i></div>
+    <div class="garland" aria-hidden="true"><i class="flake sm">❄</i><i class="flake">❄</i><i class="flake lg">❄</i><i class="flake">❄</i><i class="flake sm">❄</i></div>
     <h2>Your 2027 in tarot starts with one choice.</h2>
-    <p>Yearly memberships at the sale price and The Priestess Path Collection are open through Monday, November 30 at 11:59pm Pacific.</p>
+    <p>The sale prices and The Priestess Path Collection are open through Monday, November 30 at 11:59pm Pacific.</p>
     <a class="btn" href="#price">Choose your yearly membership</a>
     <div class="ps"><p><b>P.S.</b> If you've been meaning to learn tarot "properly" for a while now, this is the weekend to settle it for a whole year. The sale prices end Monday night at 11:59pm Pacific.</p></div>
   </div>
