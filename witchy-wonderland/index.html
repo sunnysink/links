@@ -43,8 +43,6 @@ a{color:inherit}
 .fill{background:#fff4d6;border:1px dashed #c08a2c;color:#7a4f0c;padding:1px 6px;border-radius:4px;font-size:.9em;font-weight:500}
 
 /* copy bar */
-.copybar{position:fixed;right:18px;bottom:18px;z-index:50}
-.copybar button{font:600 14px Jost;background:var(--night);color:var(--frost);border:1px solid var(--silver2);padding:12px 18px;border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 
 /* snowflake garland */
 .flake{font-style:normal;font-size:22px;line-height:22px;color:#e9eff6;position:relative;background:var(--night);padding:0 6px;text-shadow:0 0 12px rgba(233,239,246,.6)}
@@ -71,7 +69,7 @@ a{color:inherit}
 .hero .promise em{color:var(--glow)}
 .hero .sub{font-size:19px;color:var(--silver);max-width:34em}
 .hero .eyebrow{color:var(--glow)}
-.hero .dates{margin-top:18px;font-size:14px;color:var(--silver2);letter-spacing:.06em}
+.hero .dates{margin-top:20px;font-size:19px;font-weight:600;color:var(--glow);letter-spacing:.02em}
 .snow{position:absolute;inset:0;pointer-events:none}
 .snow i{position:absolute;top:-10px;width:4px;height:4px;border-radius:50%;background:#fff;opacity:.7;animation:fall linear infinite}
 @keyframes fall{to{transform:translateY(110vh) translateX(30px)}}
@@ -253,7 +251,7 @@ footer a{color:var(--silver)}
       <p class="promise">Every bonus course, yours for life. <em>For the first time ever.</em></p>
       <p class="sub">Yearly memberships from $59 a year, plus every bonus course for life at $37. Black Friday through Cyber Monday only.</p>
       <a class="btn" href="#price">See the offers</a>
-      <p class="dates">Nov 27 to 30, 2026 · ends Monday at 11:59pm Pacific</p>
+      <p class="dates">Four days only: November 27 to 30. Ends Monday at 11:59pm Pacific.</p>
     </div>
   </div>
   <div class="garland wrap" aria-hidden="true"><i class="flake sm">❄</i><i class="flake">❄</i><i class="flake lg">❄</i><i class="flake">❄</i><i class="flake sm">❄</i></div>
@@ -334,7 +332,12 @@ footer a{color:var(--silver)}
       <div class="label">Magic and Intuition Mastery Year Pass<span class="bp">Learn how to trust your intuition and step into your magic.</span></div>
       <div><h4>What you get</h4><ul>
         <li>A full year of Magic and Intuition Mastery, Tarot Mastery Circle and High Priestess Tarot School</li>
+        <li>21 video trainings in three steps: connect with your intuition, build trust in it, and step into your magic</li>
+        <li>The workbooks, journals, meditations and affirmation cards for every step, plus 13 tarot and oracle spreads</li>
         <li>Lifetime access to the MIM core content</li>
+        <li>Every current MIM bonus for the full year: Hecate's Path, In Tune with the Moon and the Sacred Vision Intensive</li>
+        <li>A monthly live group coaching call with me, weekly coaching call replays and 20 workshop replays</li>
+        <li>24-hour support in the members-only group</li>
         <li>Your $99 certification fee, covered</li>
         <li>After your year, stay on as an alumni member at a lower monthly rate</li>
         <li>Alumni keep HPTS, TMC, new MIM content and bonuses like Hecate's Path</li>
@@ -449,11 +452,14 @@ footer a{color:var(--silver)}
         <p class="bp">Learn how to trust your intuition and step into your magic.</p>
         <ul>
           <li>A full year of MIM, TMC and HPTS</li>
+          <li>21 video trainings, workbooks and 13 spreads</li>
+          <li>Hecate's Path, In Tune with the Moon and the Sacred Vision Intensive</li>
+          <li>Monthly live group coaching, weekly coaching replays and 20 workshop replays</li>
           <li>Lifetime access to the MIM core content</li>
           <li>$99 certification fee covered</li>
         </ul>
         <div class="amt">$444</div>
-        <div class="after">One payment for 12 months. Regularly $555 for the year, or $708 at $59 a month. The MIM core content is yours for life.</div>
+        <div class="after">One payment for 12 months. Total value $2,786. Regularly $555 for the year, or $708 at $59 a month. The MIM core content is yours for life.</div>
         <a class="btn" href="#fill-in-stripe-link-mim">Get the MIM Year Pass</a>
       </div>
     </div>
@@ -476,7 +482,6 @@ footer a{color:var(--silver)}
         <a class="btn" href="#fill-in-stripe-link-collection">Get the Collection</a>
       </div>
     </div>
-    <p class="allget"><span class="fill">[FILL IN: your four Stripe payment links, one per button]</span></p>
   </div>
 </section>
 
@@ -549,18 +554,6 @@ footer a{color:var(--silver)}
 (function(){
   var s=document.getElementById('snow');
   for(var i=0;i<46;i++){var f=document.createElement('i');f.style.left=Math.random()*100+'%';var z=2+Math.random()*4;f.style.width=f.style.height=z+'px';f.style.animationDuration=(9+Math.random()*12)+'s';f.style.animationDelay=(-Math.random()*20)+'s';f.style.opacity=.3+Math.random()*.6;s.appendChild(f);}
-  var b=document.getElementById('copyPage');
-  b.addEventListener('click',function(){
-    var clone=document.getElementById('page').cloneNode(true);
-    clone.querySelectorAll('details').forEach(function(d){d.setAttribute('open','')});
-    clone.querySelectorAll('[aria-hidden="true"],.laptop').forEach(function(n){n.remove()});
-    var tmp=document.createElement('div');tmp.style.position='fixed';tmp.style.left='-9999px';tmp.appendChild(clone);document.body.appendChild(tmp);
-    var text=clone.innerText.replace(/\n{3,}/g,'\n\n').trim();
-    tmp.remove();
-    function done(ok){b.textContent=ok?'Copied ✓':'Select and copy manually';setTimeout(function(){b.textContent='Copy page text'},2200)}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true)},function(){fallback()})}else fallback();
-    function fallback(){var t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}t.remove();done(ok)}
-  });
 })();
 </script>
 </body>
