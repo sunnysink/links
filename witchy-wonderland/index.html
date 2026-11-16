@@ -59,7 +59,7 @@ a{color:inherit}
 .hero{position:relative;color:var(--frost);background:var(--night);overflow:hidden}
 .hero .bg{position:absolute;inset:0;background:url("img/hero.jpg") center 30%/cover no-repeat;opacity:.55}
 .hero .shade{position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,18,38,.97) 0%,rgba(7,18,38,.85) 42%,rgba(7,18,38,.35) 100%)}
-.hero .inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:70px 0 90px}
+.hero .inner{position:relative;display:grid;grid-template-columns:minmax(0,680px);gap:48px;align-items:center;padding:80px 0 100px}
 .hero h1{font-size:clamp(42px,6vw,74px);color:var(--snow);font-weight:600}
 .hero h1 em{font-style:italic;color:var(--glow)}
 .hero h1.saletitle{font-size:clamp(50px,7.2vw,96px);line-height:.95;letter-spacing:-.01em;margin:0 0 22px;text-shadow:0 0 40px rgba(243,199,126,.25)}
@@ -101,7 +101,7 @@ section{padding:86px 0}
 
 .change{background:var(--navy);color:var(--frost)}
 .change h2{color:var(--snow)}
-.change .cols{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.change .cols{display:grid;grid-template-columns:1fr;gap:18px;max-width:760px}
 .change ul{list-style:none;padding:0;margin:0}
 .change li{padding:18px 0 18px 46px;border-bottom:1px solid rgba(195,204,216,.2);position:relative;font-size:18px}
 .change li::before{content:"✦";position:absolute;left:8px;top:16px;color:var(--glow);font-size:20px}
@@ -110,11 +110,11 @@ section{padding:86px 0}
 .offer-intro .lead{font-size:21px;color:var(--muted)}
 
 .inside{background:#fff}
-.row{display:grid;grid-template-columns:220px 1fr 1fr;gap:36px;padding:40px 0;border-top:1px solid #dfe5ee}
+.row{display:grid;grid-template-columns:minmax(220px,.9fr) 1.1fr;gap:40px;padding:40px 0;border-top:1px solid #dfe5ee}
 .row:last-child{border-bottom:1px solid #dfe5ee}
 .row.tmcrow{background:linear-gradient(120deg,#eef3f9,#f8efe0);border:1px solid #e8d3ad;border-radius:14px;padding:40px 30px;margin:10px -30px}
 .row .label{font-family:"Cormorant Garamond";font-size:30px;line-height:1.05;color:var(--navy)}
-.row .label small{display:block;font-family:Jost;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.row .label .bp{display:block;font-family:"Cormorant Garamond";font-style:italic;font-size:22px;line-height:1.25;color:var(--ember);margin-top:12px}
 .row h4{margin:0 0 8px;font:600 13px Jost;letter-spacing:.16em;text-transform:uppercase;color:var(--silver2)}
 .row ul{margin:0;padding-left:18px}
 .row li{margin-bottom:6px}
@@ -157,7 +157,9 @@ section{padding:86px 0}
 .opt.mim{background:linear-gradient(170deg,#1b2f57,#0b1a33);border-color:var(--silver)}
 .opt .who{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow);font-weight:600}
 .opt.tmc .who{color:#a3591c}
-.opt h3{color:var(--snow);font-size:28px;margin:.3em 0 .5em}
+.opt h3{color:var(--snow);font-size:28px;margin:.3em 0 .3em}
+.opt .bp{font-family:"Cormorant Garamond";font-style:italic;font-size:20px;line-height:1.25;color:var(--glow);margin:0 0 .8em}
+.opt.tmc .bp{color:#a3591c}
 .opt.tmc h3,.opt.tmc .amt{color:var(--navy)}
 .opt ul{padding-left:18px;margin:0 0 18px;font-size:15px;color:var(--silver);flex:1}
 .opt.tmc ul,.opt.tmc .after{color:#3a4760}
@@ -230,27 +232,13 @@ footer a{color:var(--silver)}
   <div class="snow" id="snow" aria-hidden="true"></div>
   <div class="wrap inner">
     <div>
-      <p class="eyebrow">High Priestess Tarot School presents</p>
       <h1 class="saletitle">The Witchy Wonderland Sale</h1>
       <p class="promise">Every bonus course, yours for life. <em>For the first time ever.</em></p>
       <p class="sub">Yearly memberships from $59 a year, plus every bonus course for life at $37. Black Friday through Cyber Monday only.</p>
       <a class="btn" href="#price">See the offers</a>
       <p class="dates">Nov 27 to 30, 2026 · ends Monday at 11:59pm Pacific</p>
     </div>
-    <div class="laptop" aria-label="The Witchy Wonderland Sale shown on a laptop screen">
-      <div class="tag">Nov 27 to 30</div>
-      <div class="screen"><div class="ui">
-        <div class="top"><span>High Priestess Tarot School</span><span>❄ ☾ ✦</span></div>
-        <div class="title"><small>The Witchy Wonderland Sale</small>Your 2027 in tarot</div>
-        <div class="tiles">
-          <div class="tile"><b>HPTS Yearly</b><span>$59 a year</span></div>
-          <div class="tile"><b>TMC Yearly</b><span>$247 a year</span></div>
-          <div class="tile"><b>MIM Yearly</b><span>$444 a year</span></div>
-          <div class="tile"><b>The Priestess Path Collection</b><span>Lifetime access</span></div>
-        </div>
-      </div></div>
-      <div class="base"></div>
-    </div>
+    <!-- membership mockups go here (Sunny sends three) -->
   </div>
   <div class="garland wrap" aria-hidden="true"><i class="moon c1"></i><i class="moon c2"></i><i class="moon"></i><i class="moon c3"></i><i class="moon c4"></i></div>
 </header>
@@ -258,7 +246,6 @@ footer a{color:var(--silver)}
 <!-- 2 WHERE THEY ARE -->
 <section class="voices">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">Sound familiar?</p>
     <h2>Maybe you've said one of these to yourself this year.</h2>
     <div class="grid">
       <div class="note">"I've had my deck for a year and I still reach for the guidebook every single time."</div>
@@ -290,7 +277,6 @@ footer a{color:var(--silver)}
 <!-- 4 THE OFFER -->
 <section class="offer-intro">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">The offer</p>
     <h2>Four ways to give yourself 2027 in tarot.</h2>
     <p class="lead">The Witchy Wonderland Sale runs for four days only. Pick the yearly membership that matches where you are right now, from your first lessons to certification and beyond. Or pick The Priestess Path Collection for lifetime access to six courses. You pay once, and your whole year of tarot is ready to go.</p>
   </div>
@@ -299,12 +285,11 @@ footer a{color:var(--silver)}
 <!-- 5 WHAT'S INSIDE -->
 <section class="inside">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">What's inside</p>
     <h2>Tarot School Yearly Memberships</h2>
 
     <div class="row">
-      <div class="label"><small>Yearly membership</small>High Priestess Tarot School</div>
-      <div><h4>What it holds</h4><ul>
+      <div class="label">High Priestess Tarot School Yearly Membership<span class="bp">Transform into a confident tarot reader and business owner. No memorization required.</span></div>
+      <div><h4>What you get</h4><ul>
         <li>A full year of High Priestess Tarot School, renewing yearly</li>
         <li>The 33-lesson core course</li>
         <li>Five bonus trainings, including Magic of Tarot &amp; Astrology</li>
@@ -312,12 +297,11 @@ footer a{color:var(--silver)}
         <li>Q&amp;A by video: post your tarot question and I answer it on video</li>
         <li>The member community</li>
       </ul></div>
-      <div><h4>What it gives you</h4><p>A steady place to learn tarot from the very first card, at your own pace, all year. You learn to read from your own intuition, with someone to answer your questions along the way.</p></div>
     </div>
 
     <div class="row tmcrow">
-      <div class="label"><small>Yearly membership</small>Tarot Mastery Circle</div>
-      <div><h4>What it holds</h4><ul>
+      <div class="label">Tarot Mastery Circle Yearly Membership<span class="bp">Most tarot students never master their craft. You're about to be the exception.</span></div>
+      <div><h4>What you get</h4><ul>
         <li>A full year of Tarot Mastery Circle, renewing yearly</li>
         <li>Everything in High Priestess Tarot School</li>
         <li>Live practice sessions and a weekly Zoom</li>
@@ -325,17 +309,15 @@ footer a{color:var(--silver)}
         <li>Direct access to me</li>
         <li>The path to certification (the $99 certification fee is separate)</li>
       </ul></div>
-      <div><h4>What it gives you</h4><p>Real practice with real people, so reading for others starts to feel natural. You get feedback while you read, and a clear route to becoming a certified tarot reader in 2027.</p></div>
     </div>
 
     <div class="row">
-      <div class="label"><small>Yearly membership</small>Magic and Intuition Mastery</div>
-      <div><h4>What it holds</h4><ul>
+      <div class="label">Magic and Intuition Mastery Yearly Membership<span class="bp">Learn how to trust your intuition and step into your magic.</span></div>
+      <div><h4>What you get</h4><ul>
         <li>A full year of Magic and Intuition Mastery, Tarot Mastery Circle and High Priestess Tarot School, renewing yearly</li>
         <li>Lifetime access to the MIM core content</li>
         <li>Your $99 certification fee, covered</li>
       </ul></div>
-      <div><h4>What it gives you</h4><p>The deepest level I teach, with everything below it included. You keep the MIM core content for life, so your work on intuition and magic stays with you long after the year is over.</p></div>
     </div>
 
   </div>
@@ -344,7 +326,6 @@ footer a{color:var(--silver)}
 <!-- 5b COLLECTION -->
 <section class="collection">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--glow)">Lifetime access</p>
     <h2>The Priestess Path Collection</h2>
     <p class="lead">Six courses that are yours for life. Each one arrives in your inbox as its own PDF with links to everything inside, so you can keep them, come back to them and work through them at your own pace.</p>
     <p class="lead"><b>All six courses are also inside High Priestess Tarot School.</b> The HPTS Yearly Membership gives you every one of them all year, along with the 33-lesson core course, the Tarot Reflections Journal, Q&amp;A by video and the community, for $59.</p>
@@ -365,7 +346,6 @@ footer a{color:var(--silver)}
   <div class="wrap cols">
     <div class="portrait"><img src="img/sunny.webp" alt="Sunny Sink, founder of High Priestess Tarot School"></div>
     <div>
-      <p class="eyebrow" style="color:var(--ember)">About me</p>
       <h2>Hi, I'm Sunny.</h2>
       <p>I'm the teacher behind High Priestess Tarot School. I've read oracle cards since 2017 and tarot since late 2021, and I've taught tarot since March 2023 to more than 3,000 students.</p>
       <p>When I started tarot, I tried to memorize the meanings from guidebooks, and every book told me something different. What finally worked was something I was already doing with my oracle cards on my daily TikTok lives. I made High Priestess Tarot School to teach open-ended meanings that work in every situation, so my students can read from their own intuition.</p>
@@ -377,7 +357,6 @@ footer a{color:var(--silver)}
 <!-- 9 WHAT BUYERS SAY -->
 <section class="says">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">What students say</p>
     <h2>In their own words.</h2>
     <div class="quotes">
       <img src="img/proof-2.jpg" alt="A student: This is life changing for me. Having you answer questions live and knowing I can reach out if I'm still confused is so comforting." loading="lazy">
@@ -393,7 +372,6 @@ footer a{color:var(--silver)}
 <!-- 7 WHO IT'S FOR -->
 <section class="forwho">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">Who it's for</p>
     <h2>Pick the one that sounds like you.</h2>
     <div class="list">
       <p><b>You're new to tarot</b> or you've been dabbling for a while, and you want to feel like a real reader by the end of 2027. Choose the HPTS Yearly Membership.</p>
@@ -409,13 +387,13 @@ footer a{color:var(--silver)}
 <!-- 10 PRICE -->
 <section class="price" id="price">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--glow)">Tarot School Yearly Memberships</p>
     <h2>Choose your year.</h2>
     <p class="intro">Each yearly membership renews at the sale price you join at, every year you stay. Cancel anytime. The sale price is open through Monday, November 30.</p>
     <div class="options">
       <div class="opt hpts">
         <span class="who">Start here</span>
         <h3>HPTS Yearly Membership</h3>
+        <p class="bp">Transform into a confident tarot reader and business owner. No memorization required.</p>
         <ul>
           <li>A full year of High Priestess Tarot School</li>
           <li>33-lesson core course</li>
@@ -430,8 +408,9 @@ footer a{color:var(--silver)}
       <div class="opt tmc">
         <span class="who">Practice and certify</span>
         <h3>TMC Yearly Membership</h3>
+        <p class="bp">Most tarot students never master their craft. You're about to be the exception.</p>
         <ul>
-          <li>12 months of Tarot Mastery Circle</li>
+          <li>A full year of Tarot Mastery Circle</li>
           <li>Everything in High Priestess Tarot School</li>
           <li>Live practice sessions and a weekly Zoom</li>
           <li>Live feedback on your readings</li>
@@ -445,6 +424,7 @@ footer a{color:var(--silver)}
       <div class="opt mim">
         <span class="who">Everything</span>
         <h3>MIM Yearly Membership</h3>
+        <p class="bp">Learn how to trust your intuition and step into your magic.</p>
         <ul>
           <li>A full year of MIM, TMC and HPTS</li>
           <li>Lifetime access to the MIM core content</li>
@@ -458,7 +438,6 @@ footer a{color:var(--silver)}
 
     <div class="colbuy" id="collection-price">
       <div>
-        <p class="eyebrow" style="color:var(--glow)">Lifetime access</p>
         <h3>The Priestess Path Collection</h3>
         <ul>
           <li>Magic of Tarot &amp; Astrology</li>
@@ -482,7 +461,6 @@ footer a{color:var(--silver)}
 <!-- 11 DATES -->
 <section class="dates">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">The dates</p>
     <h2>Open for four days, Black Friday through Cyber Monday.</h2>
     <div class="cal">
       <div class="day"><div class="n">Friday</div><div class="d">Nov 27</div><p>The sale opens. Black Friday.</p></div>
@@ -497,7 +475,6 @@ footer a{color:var(--silver)}
 <!-- 12 FAQ -->
 <section class="faq">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--glow)">Questions</p>
     <h2>Before you choose.</h2>
     <details><summary>Does my yearly membership renew on its own?</summary><p>Yes. It renews each year at the sale price you joined at, so your price stays the same every year you stay. Cancel anytime before your renewal date by emailing support@sunnysink.com.</p></details>
     <details><summary>When does my year start?</summary><p>The day you join. Your membership renews on that date each year.</p></details>
@@ -513,7 +490,6 @@ footer a{color:var(--silver)}
 <!-- 13 HOW TO BUY -->
 <section class="how">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--ember)">How it works</p>
     <h2>How to buy, and what happens next.</h2>
     <h3 style="margin-top:28px">If you choose a yearly membership</h3>
     <div class="steps">
